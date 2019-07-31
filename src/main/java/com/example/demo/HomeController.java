@@ -24,11 +24,7 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
-    //payment information
-    @RequestMapping("/payment")
-    public String about(){
-        return "payment";
-    }
+
 
 
     //Home
@@ -67,6 +63,12 @@ public class HomeController {
         }
         userService.saveUser(user);
         return "ticket";
+    }
+
+    //payment information
+    @RequestMapping("/payment")
+    public String about(){
+        return "payment";
     }
 
     @RequestMapping("/ticket")
