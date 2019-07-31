@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.text.NumberFormat;
 import java.util.Collection;
 import java.util.Set;
 
@@ -76,7 +77,7 @@ public class User {
     @Column(name="cardNumber")
     private long cardNumber;
 
-    private int totalCost;
+    private double totalCost;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name="user_id"),
@@ -239,7 +240,7 @@ public class User {
         this.flight = flight;
     }
 
-    public int getTotalCost() {
+    public String getTotalCost() {
         int total = 0;
 
         for(Flight flight : getFlight()){
@@ -247,10 +248,14 @@ public class User {
             total += flight.getPrice();
         }
 
-        return total;
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String totalFormat = formatter.format(total);
+
+
+        return totalFormat;
     }
 
-    public void setTotalCost(int totalCost) {
+    public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
     }
 }

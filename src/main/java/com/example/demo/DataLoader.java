@@ -40,8 +40,15 @@ public class DataLoader implements CommandLineRunner {
         user.setRoles(Arrays.asList(adminRole, userRole));
         userRepository.save(user);
 
-        Flight flight = new Flight("Dallas, TX", "Dulles International, Washington D.C.", 300, "10/16/2019", "10/16/2019", "9:00am", "10:00pm", false, false, "Business", 300, 25, false);
-        flightRepository.save(flight);
+        Flight dallasToDC = new Flight("Dallas, TX", "Dulles International, Washington D.C.", 300.00, "10/16/2019", "10/16/2019", "9:00am", "10:00pm", false, false, "Business", 300, 25, false);
+        flightRepository.save(dallasToDC);
+
+        Flight dcToDallas1 = new Flight("Dulles International, Washington D.C.", "Dallas, TX", 350.00, "10/17/2019", "10/17/2019", "10:00am", "11:00pm", false, false, "Business", 300, 25, false);
+        flightRepository.save(dcToDallas1);
+
+        Flight dcToDallas2 = new Flight("Dulles International, Washington D.C.", "Dallas, TX", 800.00, "10/16/2019", "10/26/2019", "9:00am", "10:00pm", true, false, "Business", 300, 25, false);
+        flightRepository.save(dcToDallas2);
+
 
     }
 

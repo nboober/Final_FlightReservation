@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import javax.persistence.*;
+import java.text.NumberFormat;
 
 @Entity
 public class Flight {
@@ -13,7 +14,7 @@ public class Flight {
 
     private String endLocation;
 
-    private int price;
+    private double price;
 
     private String startDate;
 
@@ -45,7 +46,7 @@ public class Flight {
 
     }
 
-    public Flight(String startLocation, String endLocation, int price, String startDate, String endDate, String startTime, String endTime, boolean roundTrip, boolean layover, String flightClass, int flightCapacity, int rewardPoints, boolean discount) {
+    public Flight(String startLocation, String endLocation, double price, String startDate, String endDate, String startTime, String endTime, boolean roundTrip, boolean layover, String flightClass, int flightCapacity, int rewardPoints, boolean discount) {
         this.setStartLocation(startLocation);
         this.setEndLocation(endLocation);
         this.setPrice(price);
@@ -85,11 +86,11 @@ public class Flight {
         this.endLocation = endLocation;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
