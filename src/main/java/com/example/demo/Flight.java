@@ -47,11 +47,10 @@ public class Flight {
 
     }
 
-    public Flight(String startLocation, String endLocation, int price, int totalPrice, String startDate, String endDate, String startTime, String endTime, boolean roundTrip, boolean layover, String flightClass, int layoverDuration, int flightCapacity, int rewardPoints) {
+    public Flight(String startLocation, String endLocation, int price, String startDate, String endDate, String startTime, String endTime, boolean roundTrip, boolean layover, String flightClass, int flightCapacity, int rewardPoints) {
         this.setStartLocation(startLocation);
         this.setEndLocation(endLocation);
         this.setPrice(price);
-        this.setTotalPrice(totalPrice);
         this.setStartDate(startDate);
         this.setEndDate(endDate);
         this.setStartTime(startTime);
@@ -59,7 +58,6 @@ public class Flight {
         this.setRoundTrip(roundTrip);
         this.setLayover(layover);
         this.setFlightClass(flightClass);
-        this.setLayoverDuration(layoverDuration);
         this.setFlightCapacity(flightCapacity);
         this.setRewardPoints(rewardPoints);
     }

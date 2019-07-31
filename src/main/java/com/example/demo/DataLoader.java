@@ -17,6 +17,9 @@ public class DataLoader implements CommandLineRunner {
     RoleRepository roleRepository;
 
     @Autowired
+    FlightRepository flightRepository;
+
+    @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
@@ -36,6 +39,10 @@ public class DataLoader implements CommandLineRunner {
         user = new User("admin@admin.com", "password", "Admin", "User", true, "admin", "301-999-9999", "N/A", "N/A");
         user.setRoles(Arrays.asList(adminRole, userRole));
         userRepository.save(user);
+
+        Flight flight = new Flight("Dallas, TX", "Dulles International, Washington D.C.", 300, "10/16/2019", "10/16/2019", "9:00am", "10:00pm", false, false, "Business", 300, 25);
+        flightRepository.save(flight);
+
     }
 
 }
