@@ -19,6 +19,9 @@ public class HomeController {
     RoleRepository roleRepository;
 
     @Autowired
+    FlightRepository flightRepository;
+
+    @Autowired
     private UserService userService;
 
     //Home
@@ -26,6 +29,7 @@ public class HomeController {
     public String index(Model model){
         //If there is a user logged in get the user
         model.addAttribute("user", userRepository.findAll());
+
         if(userService.getUser() != null) {
             model.addAttribute("user", userService.getUser());
         }

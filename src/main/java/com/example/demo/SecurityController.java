@@ -21,6 +21,9 @@ public class SecurityController {
     @Autowired
     RoleRepository roleRepository;
 
+    @Autowired
+    FlightRepository flightRepository;
+
     //Register Page Create User
     @GetMapping(value = "/register")
     public String showRegistration(Model model){
@@ -56,6 +59,7 @@ public class SecurityController {
     public String admin(Model model){
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("roles", roleRepository.findAll());
+        model.addAttribute("flights", flightRepository.findAll());
 
         return "admin";
     }
