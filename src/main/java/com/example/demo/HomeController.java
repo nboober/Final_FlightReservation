@@ -24,10 +24,10 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
-    //traveler information
-    @RequestMapping("/travelerInfo")
+    //payment information
+    @RequestMapping("/payment")
     public String about(){
-        return "travelerInfo";
+        return "payment";
     }
 
 
