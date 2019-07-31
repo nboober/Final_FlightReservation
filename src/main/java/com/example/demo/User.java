@@ -87,6 +87,10 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     public Set<Flight> flight;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    public Set<QRCodeGenerator> qrCode;
+
+
     public User(){
 
     }
@@ -257,5 +261,13 @@ public class User {
 
     public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
+    }
+
+    public Set<QRCodeGenerator> getQRCode() {
+        return qrCode;
+    }
+
+    public void setQRCode(Set<QRCodeGenerator> QRCode) {
+        this.qrCode = QRCode;
     }
 }
