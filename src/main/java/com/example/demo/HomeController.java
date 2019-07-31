@@ -21,6 +21,13 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
+    //traveler information
+    @RequestMapping("/travelerInfo")
+    public String about(){
+        return "travelerInfo";
+    }
+
+
     //Home
     @RequestMapping("/")
     public String index(Model model){
