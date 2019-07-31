@@ -27,7 +27,7 @@ public class HomeController {
     //Home
     @RequestMapping("/")
     public String index(Model model){
-        model.addAttribute("user", userRepository.findAll());
+        model.addAttribute("users", userRepository.findAll());
         model.addAttribute("flights", flightRepository.findAll());
 
         //If there is a user logged in get the user
@@ -39,7 +39,7 @@ public class HomeController {
 
     @RequestMapping("/deals")
     public String deals(Model model){
-        model.addAttribute("flight", flightRepository.findByDiscount(true));
+        model.addAttribute("flights", flightRepository.findByDiscount(true));
 
         return "deals";
     }
