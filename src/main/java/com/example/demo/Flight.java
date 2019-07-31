@@ -15,8 +15,6 @@ public class Flight {
 
     private int price;
 
-    private int totalPrice;
-
     private String startDate;
 
     private String endDate;
@@ -93,14 +91,6 @@ public class Flight {
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    public int getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(int totalPrice) {
-        this.totalPrice = totalPrice;
     }
 
     public String getStartDate() {

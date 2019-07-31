@@ -76,6 +76,8 @@ public class User {
     @Column(name="cardNumber")
     private long cardNumber;
 
+    private int totalCost;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name="user_id"),
             inverseJoinColumns = @JoinColumn(name="role_id"))
@@ -235,5 +237,20 @@ public class User {
 
     public void setFlight(Set<Flight> flight) {
         this.flight = flight;
+    }
+
+    public int getTotalCost() {
+        int total = 0;
+
+        for(Flight flight : getFlight()){
+
+            total += flight.getPrice();
+        }
+
+        return total;
+    }
+
+    public void setTotalCost(int totalCost) {
+        this.totalCost = totalCost;
     }
 }
