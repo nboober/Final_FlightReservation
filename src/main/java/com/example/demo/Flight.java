@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import javax.persistence.*;
+import java.text.NumberFormat;
 
 @Entity
 public class Flight {
@@ -13,9 +14,7 @@ public class Flight {
 
     private String endLocation;
 
-    private int price;
-
-    private int totalPrice;
+    private double price;
 
     private String startDate;
 
@@ -37,7 +36,7 @@ public class Flight {
 
     private int rewardPoints;
 
-    private int discount;
+    private boolean discount;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="user_id")
@@ -47,11 +46,10 @@ public class Flight {
 
     }
 
-    public Flight(String startLocation, String endLocation, int price, int totalPrice, String startDate, String endDate, String startTime, String endTime, boolean roundTrip, boolean layover, String flightClass, int layoverDuration, int flightCapacity, int rewardPoints) {
+    public Flight(String startLocation, String endLocation, double price, String startDate, String endDate, String startTime, String endTime, boolean roundTrip, boolean layover, String flightClass, int flightCapacity, int rewardPoints, boolean discount) {
         this.setStartLocation(startLocation);
         this.setEndLocation(endLocation);
         this.setPrice(price);
-        this.setTotalPrice(totalPrice);
         this.setStartDate(startDate);
         this.setEndDate(endDate);
         this.setStartTime(startTime);
@@ -59,9 +57,9 @@ public class Flight {
         this.setRoundTrip(roundTrip);
         this.setLayover(layover);
         this.setFlightClass(flightClass);
-        this.setLayoverDuration(layoverDuration);
         this.setFlightCapacity(flightCapacity);
         this.setRewardPoints(rewardPoints);
+        this.setDiscount(discount);
     }
 
     public long getId() {
@@ -88,20 +86,12 @@ public class Flight {
         this.endLocation = endLocation;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
-    }
-
-    public int getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(int totalPrice) {
-        this.totalPrice = totalPrice;
     }
 
     public String getStartDate() {
@@ -184,11 +174,11 @@ public class Flight {
         this.rewardPoints = rewardPoints;
     }
 
-    public int getDiscount() {
+    public boolean getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(boolean discount) {
         this.discount = discount;
     }
 

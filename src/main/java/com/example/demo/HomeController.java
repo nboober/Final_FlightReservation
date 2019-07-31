@@ -19,6 +19,9 @@ public class HomeController {
     RoleRepository roleRepository;
 
     @Autowired
+    FlightRepository flightRepository;
+
+    @Autowired
     private UserService userService;
 
     //traveler information
@@ -31,12 +34,47 @@ public class HomeController {
     //Home
     @RequestMapping("/")
     public String index(Model model){
+        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("flights", flightRepository.findAll());
+
         //If there is a user logged in get the user
-        model.addAttribute("user", userRepository.findAll());
         if(userService.getUser() != null) {
             model.addAttribute("user", userService.getUser());
         }
-        return "index";
+        return "home";
+    }
+
+    @RequestMapping("/deals")
+    public String deals(Model model){
+        model.addAttribute("flights", flightRepository.findByDiscount(true));
+
+        return "deals";
+    }
+
+    @RequestMapping("/flightoptions")
+    public String flightOptions(Model model){
+        model.addAttribute("flights", flightRepository.findAll());
+
+        return "options";
+    }
+
+    @PostMapping("/payment")
+    public String payment(@Valid User user, long id, BindingResult result, Model model){
+        model.addAttribute("user", userRepository.findById(id).get());
+        model.addAttribute("flights", flightRepository.findAll());
+        if(result.hasErrors()){
+            return "payment";
+        }
+        userService.saveUser(user);
+        return "ticket";
+    }
+
+    @RequestMapping("/ticket")
+    public String ticketPrint(long id,Model model){
+    model.addAttribute("user", userRepository.findById(id).get());
+    model.addAttribute("flights", flightRepository.findAll());
+
+        return "ticket";
     }
 
     @RequestMapping("/update/{id}")

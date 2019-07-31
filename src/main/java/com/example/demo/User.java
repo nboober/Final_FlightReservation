@@ -4,6 +4,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 //import javax.management.relation.Role;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.text.NumberFormat;
 import java.util.Collection;
 import java.util.Set;
 
@@ -15,41 +19,65 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long id;
 
+    @NotNull
+    @Size(min=2)
     @Column(name="email", nullable = false)
     private String email;
 
+    @NotNull
+    @Size(min=2)
     @Column(name="password")
     private String password;
 
+    @NotNull
+    @Size(min=2)
     @Column(name="first_name")
     private String firstName;
 
+    @NotNull
+    @Size(min=2)
     @Column(name="last_name")
     private String lastName;
 
     @Column(name = "enabled")
     private boolean enabled;
 
+    @NotNull
+    @Size(min=2)
     @Column(name = "username")
     private String username;
 
+    @NotNull
+    @Size(min=2)
     @Column(name = "phone")
     private String phone;
 
+    @NotNull
+    @Size(min=2)
     @Column(name="DOB")
     private String dateOfBirth;
 
+    @NotNull
+    @Size(min=2)
     @Column(name="countryOfCitizenship")
     private String originCountry;
 
+    @NotNull
+    @Size(min=2)
     @Column(name="card_First_Name")
     private String cardFirstName;
 
+    @NotNull
+    @Size(min=2)
     @Column(name="card_Last_Name")
     private String cardLastName;
 
+    @NotNull
+    @Min(1)
     @Column(name="cardNumber")
     private long cardNumber;
+
+    private double totalCost;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name="user_id"),
@@ -210,5 +238,24 @@ public class User {
 
     public void setFlight(Set<Flight> flight) {
         this.flight = flight;
+    }
+
+    public String getTotalCost() {
+        int total = 0;
+
+        for(Flight flight : getFlight()){
+
+            total += flight.getPrice();
+        }
+
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String totalFormat = formatter.format(total);
+
+
+        return totalFormat;
+    }
+
+    public void setTotalCost(double totalCost) {
+        this.totalCost = totalCost;
     }
 }
