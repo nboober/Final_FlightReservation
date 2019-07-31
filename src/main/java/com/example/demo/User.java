@@ -19,22 +19,22 @@ public class User {
     public long id;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=2)
     @Column(name="email", nullable = false)
     private String email;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=2)
     @Column(name="password")
     private String password;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=2)
     @Column(name="first_name")
     private String firstName;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=2)
     @Column(name="last_name")
     private String lastName;
 
@@ -42,32 +42,32 @@ public class User {
     private boolean enabled;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=2)
     @Column(name = "username")
     private String username;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=2)
     @Column(name = "phone")
     private String phone;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=2)
     @Column(name="DOB")
     private String dateOfBirth;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=2)
     @Column(name="countryOfCitizenship")
     private String originCountry;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=2)
     @Column(name="card_First_Name")
     private String cardFirstName;
 
     @NotNull
-    @Size(min=1)
+    @Size(min=2)
     @Column(name="card_Last_Name")
     private String cardLastName;
 
