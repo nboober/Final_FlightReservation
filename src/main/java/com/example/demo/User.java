@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import javax.management.relation.Role;
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name="User_Data")
@@ -32,22 +33,61 @@ public class User {
     @Column(name = "username")
     private String username;
 
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name="DOB")
+    private String dateOfBirth;
+
+    @Column(name="countryOfCitizenship")
+    private String originCountry;
+
+    @Column(name="card_First_Name")
+    private String cardFirstName;
+
+    @Column(name="card_Last_Name")
+    private String cardLastName;
+
+    @Column(name="cardNumber")
+    private long cardNumber;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name="user_id"),
             inverseJoinColumns = @JoinColumn(name="role_id"))
     private Collection<Role> roles;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    public Set<Flight> flight;
+
     public User(){
 
     }
 
-    public User(String email, String password, String firstName, String lastName, boolean enabled, String username){
+    public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String phone, String dateOfBirth, String originCountry){
         this.setEmail(email);
         this.setPassword(password);
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setEnabled(enabled);
         this.setUsername(username);
+        this.setPhone(phone);
+        this.setDateOfBirth(dateOfBirth);
+        this.setOriginCountry(originCountry);
+    }
+
+    public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String phone, String dateOfBirth, String originCountry, String cardFirstName, String cardLastName, long cardNumber){
+        this.setEmail(email);
+        this.setPassword(password);
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setEnabled(enabled);
+        this.setUsername(username);
+        this.setPhone(phone);
+        this.setDateOfBirth(dateOfBirth);
+        this.setOriginCountry(originCountry);
+        this.setCardFirstName(cardFirstName);
+        this.setCardLastName(cardLastName);
+        this.setCardNumber(cardNumber);
     }
 
     public long getId() {
@@ -114,5 +154,61 @@ public class User {
 
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getOriginCountry() {
+        return originCountry;
+    }
+
+    public void setOriginCountry(String originCountry) {
+        this.originCountry = originCountry;
+    }
+
+    public String getCardFirstName() {
+        return cardFirstName;
+    }
+
+    public void setCardFirstName(String cardFirstName) {
+        this.cardFirstName = cardFirstName;
+    }
+
+    public String getCardLastName() {
+        return cardLastName;
+    }
+
+    public void setCardLastName(String cardLastName) {
+        this.cardLastName = cardLastName;
+    }
+
+    public long getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(long cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public Set<Flight> getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Set<Flight> flight) {
+        this.flight = flight;
     }
 }
