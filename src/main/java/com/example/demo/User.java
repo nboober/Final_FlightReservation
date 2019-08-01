@@ -99,18 +99,6 @@ public class User {
 
     }
 
-    public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String phone, String dateOfBirth, String originCountry){
-        this.setEmail(email);
-        this.setPassword(password);
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
-        this.setEnabled(enabled);
-        this.setUsername(username);
-        this.setPhone(phone);
-        this.setDateOfBirth(dateOfBirth);
-        this.setOriginCountry(originCountry);
-    }
-
     public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String phone, String dateOfBirth, String originCountry, String address, String city, String state, String zipcode){
         this.setEmail(email);
         this.setPassword(password);
