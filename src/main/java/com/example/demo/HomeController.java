@@ -64,15 +64,6 @@ public class HomeController {
         return "ticket";
     }
 
-<<<<<<< HEAD
-    //for Yun testing payment
-    @RequestMapping("/payment")
-    public String payment(){
-        return "payment";
-    }
-
-=======
->>>>>>> Nick
     @RequestMapping("/ticket/{id}")
     public String ticketPrint(@PathVariable("id") long id,Model model){
     model.addAttribute("user", userRepository.findById(id).get());
