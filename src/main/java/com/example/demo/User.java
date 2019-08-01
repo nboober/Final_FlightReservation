@@ -77,6 +77,34 @@ public class User {
     @Column(name="cardNumber")
     private long cardNumber;
 
+    @NotNull
+    @Min(1)
+    private int securityCode;
+
+    @NotNull
+    @Size(min=2)
+    private String address;
+
+    @NotNull
+    @Size(min=2)
+    private String city;
+
+    @NotNull
+    @Size(min=2)
+    private String state;
+
+    @NotNull
+    @Size(min=2)
+    private String zipcode;
+
+    @NotNull
+    @Min(1)
+    private int cardExpMonth;
+
+    @NotNull
+    @Min(1)
+    private int cardExpYear;
+
     private double totalCost;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -107,7 +135,7 @@ public class User {
         this.setOriginCountry(originCountry);
     }
 
-    public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String phone, String dateOfBirth, String originCountry, String cardFirstName, String cardLastName, long cardNumber){
+    public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String phone, String dateOfBirth, String originCountry, String cardFirstName, String cardLastName, long cardNumber, int securityCode, String address, String city, String state, String zipcode, int cardExpMonth, int cardExpYear){
         this.setEmail(email);
         this.setPassword(password);
         this.setFirstName(firstName);
@@ -120,6 +148,14 @@ public class User {
         this.setCardFirstName(cardFirstName);
         this.setCardLastName(cardLastName);
         this.setCardNumber(cardNumber);
+        this.setSecurityCode(securityCode);
+        this.setAddress(address);
+        this.setCity(city);
+        this.setState(state);
+        this.setZipcode(zipcode);
+        this.setCardExpMonth(cardExpMonth);
+        this.setCardExpYear(cardExpYear);
+
     }
 
     public long getId() {
@@ -271,5 +307,69 @@ public class User {
 
     public void setQRCode(Set<QRCodeGenerator> QRCode) {
         this.qrCode = QRCode;
+    }
+
+    public Set<QRCodeGenerator> getQrCode() {
+        return qrCode;
+    }
+
+    public void setQrCode(Set<QRCodeGenerator> qrCode) {
+        this.qrCode = qrCode;
+    }
+
+    public int getSecurityCode() {
+        return securityCode;
+    }
+
+    public void setSecurityCode(int securityCode) {
+        this.securityCode = securityCode;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public int getCardExpMonth() {
+        return cardExpMonth;
+    }
+
+    public void setCardExpMonth(int cardExpMonth) {
+        this.cardExpMonth = cardExpMonth;
+    }
+
+    public int getCardExpYear() {
+        return cardExpYear;
+    }
+
+    public void setCardExpYear(int cardExpYear) {
+        this.cardExpYear = cardExpYear;
     }
 }

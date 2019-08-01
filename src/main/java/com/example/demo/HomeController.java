@@ -28,7 +28,7 @@ public class HomeController {
 
     //Home
     @RequestMapping("/")
-    public String index(Model model){
+    public String index(@Valid Flight flight, BindingResult result, Model model){
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("flights", flightRepository.findAll());
 
@@ -64,12 +64,15 @@ public class HomeController {
         return "ticket";
     }
 
+<<<<<<< HEAD
     //for Yun testing payment
     @RequestMapping("/payment")
     public String payment(){
         return "payment";
     }
 
+=======
+>>>>>>> Nick
     @RequestMapping("/ticket/{id}")
     public String ticketPrint(@PathVariable("id") long id,Model model){
     model.addAttribute("user", userRepository.findById(id).get());
