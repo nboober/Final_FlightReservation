@@ -62,11 +62,26 @@
             </div>
         </div>
 
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="phone">Phone Number</label>
+            <div class="col-sm-10 text-left">
+                <input class="form-control" id="phone" placeholder="301" th:field="*{phone}"
+                       type="text">
+                <strong>
+                        <span class="error-message"
+                              th:errors="*{phone}"
+                              th:if="${#fields.hasErrors('phone')}">Phone Error
+                        </span>
+                </strong>
+
+            </div>
+        </div>
+
 
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="DOB">Date of Birth</label>
+            <label class="col-sm-2 col-form-label" for="dateOfBirth">Date of Birth</label>
             <div class="col-sm-10 text-left">
-                <input class="form-control" id="DOB" placeholder="Month/Day/Year" th:field="*{dateOfBirth}"
+                <input class="form-control" id="dateOfBirth" placeholder="Month/Day/Year" th:field="*{dateOfBirth}"
                        type="text">
                 <strong>
                         <span class="error-message"
@@ -86,12 +101,44 @@
                 <strong>
                         <span class="error-message"
                               th:errors="*{originCountry}"
-                              th:if="${#fields.hasErrors('originCountry')}">Origin CountryError
+                              th:if="${#fields.hasErrors('originCountry')}">Origin Country Error
                         </span>
                 </strong>
 
             </div>
         </div>
+
+        <div class="form-group row">
+        <label class="col-sm-2 col-form-label"for="address">Address</label>
+            <div class="col-sm-10 text-left">
+        <input type="text" class="form-control"
+        id="address" placeholder="1234 Main St" th:field="*{address}">
+           <strong>
+               <span class="error-message"
+                     th:errors="*{address}"
+                     th:if="${#fields.hasErrors('address')}">
+                   Address Error
+               </span>
+           </strong>
+        </div>
+        </div>
+
+        <div class="form-row">
+        <div class="form-group col-sm-6">
+        <label for="myCity">City</label>
+        <input type="text" class="form-control" id="myCity" th:field="*{city}">
+        </div>
+        <div class="form-group col-sm-4">
+
+                <label for="state">State</label>
+                <input type="text" class="form-control" id="state" th:field="*{state}">
+            </div>
+        <div class="form-group col-sm-2">
+        <label for="myZip">Zip</label>
+        <input type="text" class="form-control" id="myZip" th:field="*{zipcode}">
+        </div>
+        </div>
+
 
         <div class="form-group row">
             <label class="col-sm-2 col-form-label" for="email">Email</label>

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
-<head th:replace="base :: head"></head>
+<head>
+    <th:block th:insert="base :: Bootstrap"></th:block>
+</head>
 <body>
 <nav th:replace="base :: navbar"></nav>
 
@@ -77,6 +79,6 @@
     <!--</div>-->
 <!--</form>-->
 
-<div th:replace="base :: javascript"></div>
+<div th:replace="base :: footer"></div>
 </body>
 </html>
