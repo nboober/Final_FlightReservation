@@ -27,29 +27,26 @@
 </head>
 <body>
 <nav th:replace="base :: navbar"></nav>
-<table>
-    <tr><th>Airlines</th>
-        <th>Departure City</th>
-        <th>Arrival City</th>
-        <th>Departure Date</th>
-        <th>Returning Date </th>
-        <th>flight class </th>
-        <th>flight capacity</th>
-        <th>Discount</th>
-        <th> </th>
-    </tr>
-<div th:each="flight: ${flights}">
-        <tr>
-            <td>${flight.operatingAirlines}</td>
-            <td>${flight.startLocation}</td>
-            <td>${flight.endLocation}</td>
-            <td>${flight.startDate}</td>
-            <td></td>
-            <td><a href="showCompleteReservation?flightId=${flight.id}">Select</a></td>
-            <a href="/home"> search again</a>
-        </tr>
+<div class="container">
+    <br/><br/><br/><br/>
+
+    <div class="jumbotron" th:each="flight : ${flights}">
+        <hr class="my-4">
+            <h6 th:text="${flight.startLocation}">Departure </h6>
+            <h6 th:text="${flight.endLocation}"> Arrival </h6>
+            <p th:number="${flight.price}"> Price </p>
+            <p th:date="${flight.startDate}"> Departing date</p>
+            <p th:date="${flight.endDate}"> Returning date </p>
+            <p th:time="${flight.startTime}"> Departing time </p>
+            <p th:time="${flight.endTime}"> Returning time </p>
+            <p th:text="${flight.roundTrip}"> roundtrip </p>
+            <p th:text="${flight.layover}"> Layover</p>
+            <p th:number="${flight.flightCapacity}"></p>
+            <p th:text="${flight.rewardPoints}"></p>
+            <p th:text="${flight.discount}"></p>
+            <a class="btn btn-primary" href="/payment" role="button">Select</a>
+    </div>
 </div>
-</table>
-<div th:replace="base :: javascript"></div>
+<div th:replace="base::javascript"></div>
 </body>
 </html>
