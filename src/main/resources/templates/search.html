@@ -6,43 +6,16 @@
     <title>Title</title>
 </head>
 <body>
-<div class="container">
-    <br/><br/><br/><br/>
-    <div class="jumbotron">
-        <h4>Complete reservation</h4>
-        <h1 class="display-4"></h1>
-        <p class="lead"></p>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <button class="btn btn-secondary active">
-                <input type="radio" name="options" id="option1" autocomplete="off" checked style=
-                        "color:blue" onclick="setColor('button', '#101010')"> Roundtrip
-            </button>
-            <button class="btn btn-secondary">
-                <input type="radio" name="options" id="option2" autocomplete="off"> One Way
-            </button>
-            <button class="btn btn-secondary">
-                <input type="radio" name="options" id="option3" autocomplete="off"> Multi-City
-            </button>
-        </div>
-<div th:each="flight : ${flights}">
-    <h2 th:text="${flight.startLocation}" ></h2>
-    <h2 th:text="${flight.endLocation}" ></h2>
-    <ul>
-        <th:block th:each="flight : ${flight.books}">
-            <li th:inline="text"> <b>[[${book.title}]]</b> released in
-                [[${book.year}]].</li>
-        </th:block>
-    </ul>
-</div>
-<div th:each="dallasToDc : ${flights}">
-    <h2 th:text="${author1.firstName}" ></h2>
-    <h2 th:text="${author1.lastName}" ></h2>
-    <ul>
-        <th:block th:each="book1 : ${author1.books}">
-            <li th:inline="text"> <b>[[${book1.title}]]</b> released in
-                [[${book1.year}]].</li>
-        </th:block>
-    </ul>
-</div>
+<table>
+    <th>Airline name</th>
+    <th>start location</th>
+    <th> end location </th>
+    <tr>
+        <td> [[flight.startLocation</td>
+        <td> [[flight.endLocation</td>
+    </tr>
+
+</table>
+<a href="/home"> search again</a>
 </body>
 </html>
