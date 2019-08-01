@@ -11,29 +11,29 @@
 <div th:replace="base::navbar"></div>
 <div class="container">
 
-    <!--<h2>Flight Information</h2>-->
-    <!--<table class="table table-hover table-striped" style="width:100%">-->
-        <!--<thead class="thead-light">-->
-        <!--<tr>-->
+    <h2>Flight Information</h2>
+    <table class="table table-hover table-striped" style="width:100%">
+        <thead class="thead-light">
+        <tr>
 
-            <!--<th>Departure Location</th>-->
-            <!--<th>Arrival Location</th>-->
-            <!--<th>Departure</th>-->
-            <!--<th>Return</th>-->
-            <!--<th>Round Trip</th>-->
-            <!--<th sec:authorize="isAuthenticated()">Actions</th>-->
-        <!--</tr>-->
-        <!--</thead>-->
+            <th>Departure Location</th>
+            <th>Arrival Location</th>
+            <th>Departure</th>
+            <th>Return</th>
+            <th>Round Trip</th>
+            <th sec:authorize="isAuthenticated()">Actions</th>
+        </tr>
+        </thead>
 
-        <!--&lt;!&ndash;enhanced for loop&ndash;&gt;-->
-        <!--<tr th:each="flight : ${flights}" th:object="${flight}">-->
+        <!--enhanced for loop-->
+        <tr th:each="flight : ${flights}" th:object="${flight}">
 
 
-            <!--<td>-->
-                <!--<span th:href="@{/ticket/{id}(id=*{id})}" th:text="*{startLocation}"></span>-->
-            <!--</td>-->
+            <td>
+                <span th:href="@{/ticket/{id}(id=*{id})}" th:text="*{startLocation}"></span>
+            </td>
 
-        <!--</tr>-->
+        </tr>
 
 
 
@@ -41,74 +41,74 @@
 
 
 
-    <form autocomplete="off" action="#" th:action="@{/payment}" th:object="${card}" method="post">
-        <input th:field="*{user_id}" type="hidden"/>
+    <!--<form autocomplete="off" action="#" th:action="@{/payment}" th:object="${card}" method="post">-->
+        <!--<input th:field="*{user_id}" type="hidden"/>-->
 
 
-            <div class="form-group">
-                <label for="cardNumber">Debit/Credit card Number</label>
-                <input type="text" class="form-control"
-                       id="cardNumber" placeholder=" "
-                       th:field="*{cardNumber}">
+            <!--<div class="form-group">-->
+                <!--<label for="cardNumber">Debit/Credit card Number</label>-->
+                <!--<input type="text" class="form-control"-->
+                       <!--id="cardNumber" placeholder=" "-->
+                       <!--th:field="*{cardNumber}">-->
 
-                <strong>
-                    <span class="error-message"
-                          th:errors="*{cardNumber}"
-                          th:if="${#fields.hasErrors('cardNumber')}">
-                          Please enter a valid card number
-                    </span>
-                </strong>
-            </div>
-        <div class="form-row">
-            <div class="form-group col-sm-6">
-                <label for="cardFirstName">Cardholder First Name</label>
-                <input type="cardFirstName" class="form-control"
-                       id="cardFirstName" placeholder=" ">
-            </div>
-            <div class="form-group col-sm-6">
-                <label for="cardLastName">Carholder Last Name</label>
-                <input type="cardLastName" class="form-control"
-                       id="cardLastName" placeholder=" ">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="myAddress">Address</label>
-            <input type="text" class="form-control"
-                   id="myAddress" placeholder="1234 Main St">
-        </div>
-        <div class="form-group">
-            <label for="myAddress2">Address 2</label>
-            <input type="text" class="form-control"
-                   id="myAddress2" placeholder="Apartment, studio, or floor">
-        </div>
-        <div class="form-row">
-            <div class="form-group col-sm-6">
-                <label for="myCity">City</label>
-                <input type="text" class="form-control" id="myCity">
-            </div>
-            <div class="form-group col-sm-4">
-                <label for="myState">State</label>
-                <select id="myState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                </select>
-            </div>
-            <div class="form-group col-sm-2">
-                <label for="myZip">Zip</label>
-                <input type="text" class="form-control" id="myZip">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="myCheck">
-                <label class="form-check-label" for="myCheck">
-                    Check me out
-                </label>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Complete Booking</button>
-    </form>
-</div>
+                <!--<strong>-->
+                    <!--<span class="error-message"-->
+                          <!--th:errors="*{cardNumber}"-->
+                          <!--th:if="${#fields.hasErrors('cardNumber')}">-->
+                          <!--Please enter a valid card number-->
+                    <!--</span>-->
+                <!--</strong>-->
+            <!--</div>-->
+        <!--<div class="form-row">-->
+            <!--<div class="form-group col-sm-6">-->
+                <!--<label for="cardFirstName">Cardholder First Name</label>-->
+                <!--<input type="cardFirstName" class="form-control"-->
+                       <!--id="cardFirstName" placeholder=" ">-->
+            <!--</div>-->
+            <!--<div class="form-group col-sm-6">-->
+                <!--<label for="cardLastName">Carholder Last Name</label>-->
+                <!--<input type="cardLastName" class="form-control"-->
+                       <!--id="cardLastName" placeholder=" ">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label for="myAddress">Address</label>-->
+            <!--<input type="text" class="form-control"-->
+                   <!--id="myAddress" placeholder="1234 Main St">-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label for="myAddress2">Address 2</label>-->
+            <!--<input type="text" class="form-control"-->
+                   <!--id="myAddress2" placeholder="Apartment, studio, or floor">-->
+        <!--</div>-->
+        <!--<div class="form-row">-->
+            <!--<div class="form-group col-sm-6">-->
+                <!--<label for="myCity">City</label>-->
+                <!--<input type="text" class="form-control" id="myCity">-->
+            <!--</div>-->
+            <!--<div class="form-group col-sm-4">-->
+                <!--<label for="myState">State</label>-->
+                <!--<select id="myState" class="form-control">-->
+                    <!--<option selected>Choose...</option>-->
+                    <!--<option>...</option>-->
+                <!--</select>-->
+            <!--</div>-->
+            <!--<div class="form-group col-sm-2">-->
+                <!--<label for="myZip">Zip</label>-->
+                <!--<input type="text" class="form-control" id="myZip">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<div class="form-check">-->
+                <!--<input class="form-check-input" type="checkbox" id="myCheck">-->
+                <!--<label class="form-check-label" for="myCheck">-->
+                    <!--Check me out-->
+                <!--</label>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<button type="submit" class="btn btn-primary">Complete Booking</button>-->
+    <!--</form>-->
+<!--</div>-->
 
 
 
