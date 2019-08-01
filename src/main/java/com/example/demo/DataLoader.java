@@ -49,6 +49,9 @@ public class DataLoader implements CommandLineRunner {
         Flight dcToDallas2 = new Flight("Dulles International, Washington D.C.", "Dallas, TX", 800.00, "10/16/2019", "10/26/2019", "9:00am", "10:00pm", true, false, "Business", 300, 25, false);
         flightRepository.save(dcToDallas2);
 
+        Flight dcToFlorida = new Flight("Dulles International, Washington D.C.", "Miami, FL", 150.00, "12/08/2019", "12/08/2019", "4:15pm", "6:00pm", false, false, "Business", 300, 25, true);
+        flightRepository.save(dcToFlorida);
+
 
     }
 
