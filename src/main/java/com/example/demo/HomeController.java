@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.Binding;
 import javax.validation.Valid;
 
 @Controller
@@ -24,8 +23,13 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
+<<<<<<< HEAD
 
 
+=======
+    @Autowired
+    QRCodeRepository qrCodeRepository;
+>>>>>>> Nick
 
     //Home
     @RequestMapping("/")
@@ -65,6 +69,7 @@ public class HomeController {
         return "ticket";
     }
 
+<<<<<<< HEAD
     //payment information
     @RequestMapping("/payment")
     public String about(){
@@ -73,8 +78,16 @@ public class HomeController {
 
     @RequestMapping("/ticket")
     public String ticketPrint(long id,Model model){
+=======
+    @RequestMapping("/ticket/{id}")
+    public String ticketPrint(@PathVariable("id") long id,Model model){
+>>>>>>> Nick
     model.addAttribute("user", userRepository.findById(id).get());
     model.addAttribute("flights", flightRepository.findAll());
+
+    QRCodeGenerator qr = new QRCodeGenerator();
+    qrCodeRepository.save(qr);
+    qr.getQR(id);
 
         return "ticket";
     }

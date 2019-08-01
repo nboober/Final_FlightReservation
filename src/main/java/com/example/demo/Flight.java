@@ -10,6 +10,8 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    private int quantity;
+
     private String startLocation;
 
     private String endLocation;
@@ -174,19 +176,27 @@ public class Flight {
         this.rewardPoints = rewardPoints;
     }
 
-    public boolean getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(boolean discount) {
-        this.discount = discount;
-    }
-
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public boolean isDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(boolean discount) {
+        this.discount = discount;
     }
 }
