@@ -9,6 +9,7 @@
 </head>
 <body>
 <div th:replace="base::navbar"></div>
+
 <div class="container">
 
     <h2>Flight Information</h2>
@@ -26,15 +27,15 @@
         </thead>
 
         <!--enhanced for loop-->
-        <tr th:each="flight : ${flights}" th:object="${flight}">
+        <tr th:if="${#lists.size(user.getFlight()>0)}" th:each="flight : ${user.getFlight()}">
 
 
             <td>
-                <span th:href="@{/ticket/{id}(id=*{id})}" th:text="*{startLocation}"></span>
+                <span th:text="${flight.getStartLocation()}"></span>
             </td>
 
         </tr>
-
+    </table>
 
 
     <h4 class="mb-2">How would you like to pay?</h4>
@@ -115,6 +116,8 @@
 
 
 <br/>
+
+</div>
 <div th:replace="base::footer"></div>
 </body>
 </html>
