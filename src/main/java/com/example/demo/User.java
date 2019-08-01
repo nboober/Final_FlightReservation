@@ -64,25 +64,6 @@ public class User {
 
     @NotNull
     @Size(min=2)
-    @Column(name="card_First_Name")
-    private String cardFirstName;
-
-    @NotNull
-    @Size(min=2)
-    @Column(name="card_Last_Name")
-    private String cardLastName;
-
-    @NotNull
-    @Min(1)
-    @Column(name="cardNumber")
-    private long cardNumber;
-
-    @NotNull
-    @Min(1)
-    private int securityCode;
-
-    @NotNull
-    @Size(min=2)
     private String address;
 
     @NotNull
@@ -97,14 +78,6 @@ public class User {
     @Size(min=2)
     private String zipcode;
 
-    @NotNull
-    @Min(1)
-    private int cardExpMonth;
-
-    @NotNull
-    @Min(1)
-    private int cardExpYear;
-
     private double totalCost;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -117,6 +90,9 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     public Set<QRCodeGenerator> qrCode;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    public Set<Card> card;
 
 
     public User(){
@@ -135,7 +111,7 @@ public class User {
         this.setOriginCountry(originCountry);
     }
 
-    public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String phone, String dateOfBirth, String originCountry, String cardFirstName, String cardLastName, long cardNumber, int securityCode, String address, String city, String state, String zipcode, int cardExpMonth, int cardExpYear){
+    public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String phone, String dateOfBirth, String originCountry, String address, String city, String state, String zipcode){
         this.setEmail(email);
         this.setPassword(password);
         this.setFirstName(firstName);
@@ -145,16 +121,10 @@ public class User {
         this.setPhone(phone);
         this.setDateOfBirth(dateOfBirth);
         this.setOriginCountry(originCountry);
-        this.setCardFirstName(cardFirstName);
-        this.setCardLastName(cardLastName);
-        this.setCardNumber(cardNumber);
-        this.setSecurityCode(securityCode);
         this.setAddress(address);
         this.setCity(city);
         this.setState(state);
         this.setZipcode(zipcode);
-        this.setCardExpMonth(cardExpMonth);
-        this.setCardExpYear(cardExpYear);
 
     }
 
@@ -248,30 +218,6 @@ public class User {
         this.originCountry = originCountry;
     }
 
-    public String getCardFirstName() {
-        return cardFirstName;
-    }
-
-    public void setCardFirstName(String cardFirstName) {
-        this.cardFirstName = cardFirstName;
-    }
-
-    public String getCardLastName() {
-        return cardLastName;
-    }
-
-    public void setCardLastName(String cardLastName) {
-        this.cardLastName = cardLastName;
-    }
-
-    public long getCardNumber() {
-        return cardNumber;
-    }
-
-    public void setCardNumber(long cardNumber) {
-        this.cardNumber = cardNumber;
-    }
-
     public Set<Flight> getFlight() {
         return flight;
     }
@@ -317,14 +263,6 @@ public class User {
         this.qrCode = qrCode;
     }
 
-    public int getSecurityCode() {
-        return securityCode;
-    }
-
-    public void setSecurityCode(int securityCode) {
-        this.securityCode = securityCode;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -357,19 +295,11 @@ public class User {
         this.zipcode = zipcode;
     }
 
-    public int getCardExpMonth() {
-        return cardExpMonth;
+    public Set<Card> getCard() {
+        return card;
     }
 
-    public void setCardExpMonth(int cardExpMonth) {
-        this.cardExpMonth = cardExpMonth;
-    }
-
-    public int getCardExpYear() {
-        return cardExpYear;
-    }
-
-    public void setCardExpYear(int cardExpYear) {
-        this.cardExpYear = cardExpYear;
+    public void setCard(Set<Card> card) {
+        this.card = card;
     }
 }
