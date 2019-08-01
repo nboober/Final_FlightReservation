@@ -249,7 +249,9 @@ public class User {
 
         for(Flight flight : getFlight()){
 
-            total += flight.getPrice();
+
+
+            total += (flight.getPrice() * flight.getQuantity());
         }
 
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
