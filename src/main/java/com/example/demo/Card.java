@@ -5,6 +5,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Entity
 public class Card {
 
     @Id
@@ -39,6 +40,7 @@ public class Card {
     private int cardExpYear;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="user_id")
     private User user;
 
     public Card(){
