@@ -10,6 +10,8 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    private String search;
+
     private int quantity;
 
     private String startLocation;
@@ -198,5 +200,13 @@ public class Flight {
 
     public void setDiscount(boolean discount) {
         this.discount = discount;
+    }
+
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
     }
 }

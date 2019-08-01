@@ -28,7 +28,7 @@ public class HomeController {
 
     //Home
     @RequestMapping("/")
-    public String index(Model model){
+    public String index(@Valid Flight flight, BindingResult result, Model model){
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("flights", flightRepository.findAll());
 

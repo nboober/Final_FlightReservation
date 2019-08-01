@@ -32,106 +32,118 @@
         <h4>Complete reservation</h4>
         <h1 class="display-4"></h1>
         <p class="lead"></p>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <button class="btn btn-secondary active">
-                <input type="radio" name="options" id="option1" autocomplete="off" checked style=
-                        "color:blue" onclick="setColor('button', '#101010')" ;/> Roundtrip
-            </button>
-            <button class="btn btn-secondary">
-                <input type="radio" name="options" id="option2" autocomplete="off"> One Way
-            </button>
-            <button class="btn btn-secondary">
-                <input type="radio" name="options" id="option3" autocomplete="off"> Multi-City
-            </button>
+
+        <form th:object="${flight}" th:action="@{/}" method="post">
+            <input type="text" th:field="*{search}"/>
+            <a style="align-content: center" href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
+                Search </a>
+        </form>
+
+        <div th:if="${flight.getStartLocation() == flight.getSearch()}"
+               th:each="flight : ${flights}" >
+            <p th:text="${flight.startLocation}"></p>
         </div>
-        <br> <br>
 
-     <form autocomplete="on"
-        action="#"
-        th:action="@{/}"
-        th:object="${flight}"
-        method="post">
+<!--        <div class="btn-group btn-group-toggle" data-toggle="buttons">-->
+<!--            <button class="btn btn-secondary active">-->
+<!--                <input type="radio" name="options" id="option1" autocomplete="off" checked style=-->
+<!--                        "color:blue" onclick="setColor('button', '#101010')" ;/> Roundtrip-->
+<!--            </button>-->
+<!--            <button class="btn btn-secondary">-->
+<!--                <input type="radio" name="options" id="option2" autocomplete="off"> One Way-->
+<!--            </button>-->
+<!--            <button class="btn btn-secondary">-->
+<!--                <input type="radio" name="options" id="option3" autocomplete="off"> Multi-City-->
+<!--            </button>-->
+<!--        </div>-->
+<!--        <br> <br>-->
 
-        <!--Departure City: ${flight.departureCity}<BR/>-->
+<!--     <form autocomplete="on"-->
+<!--        action="#"-->
+<!--        th:action="@{/}"-->
+<!--        th:object="${flight}"-->
+<!--        method="post">-->
 
-        Departure City
-        <span th:if="${#fields.hasErrors('startLocation')}"
-              th:errors="*{startLocation}"> </span>
-            <input type="text" class="form-control" id="startLocation" placeholder="City or airport"
-                   th:field="*{startLocation}"/> <br/>
+<!--        &lt;!&ndash;Departure City: ${flight.departureCity}<BR/>&ndash;&gt;-->
 
-        Arrival City
-        <span th:if="${#fields.hasErrors('endLocation')}"
-              th:errors="*{endLocation}"> </span>
-        <input type="text" class="form-control" id="endLocation" placeholder="City or Airport"
-               th:field="*{endLocation}"/> <br/>
-    Departing Date
-    <span th:if="${#fields.hasErrors('startDate')}"
-          th:errors="*{startDate}"> </span>
-    <input type="date" id="startDate" class="form-control"
-           placeholder="hidden"
-           th:field="*{startDate}"/> <br/>
-    Returning Date
-    <span th:if="${#fields.hasErrors('endDate')}"
-          th:errors="*{endDate}"> </span>
-    <input type="date" id="endDate" class="form-control"
-           placeholder="..."
-           th:field="*{endDate}"/> <br/>
-    Travelers
-    <span th:if="${#fields.hasErrors('flightCapacity')}"
-          th:errors="*{flightCapacity}"> </span>
+<!--        Departure City-->
+<!--&lt;!&ndash;        <span th:if="${#fields.hasErrors('startLocation')}"&ndash;&gt;-->
+<!--&lt;!&ndash;              th:errors="*{startLocation}"> </span>&ndash;&gt;-->
+<!--            <input type="text" class="form-control" id="startLocation" placeholder="City or airport"-->
+<!--                   th:field="${startLocation}"/> <br/>-->
 
-    <select class="custom-select">
-        <option selected="Adults"> Adults</option>
-        <option value="Children">Children</option>
-        <option value="Infants">Infants</option>
-        <div class="fadeout"></div>
-    </select>
-    <!--<input type="date" id="endDate" class="form-control"-->
-    <!--placeholder="..."-->
-    <!--th:field="*{endDate}"/> <br/>-->
+<!--        Arrival City-->
+<!--&lt;!&ndash;        <span th:if="${#fields.hasErrors('endLocation')}"&ndash;&gt;-->
+<!--&lt;!&ndash;              th:errors="*{endLocation}"> </span>&ndash;&gt;-->
+<!--        <input type="text" class="form-control" id="endLocation" placeholder="City or Airport"-->
+<!--               th:field="${endLocation}"/> <br/>-->
+<!--    Departing Date-->
+<!--&lt;!&ndash;    <span th:if="${#fields.hasErrors('startDate')}"&ndash;&gt;-->
+<!--&lt;!&ndash;          th:errors="*{startDate}"> </span>&ndash;&gt;-->
+<!--    <input type="date" id="startDate" class="form-control"-->
+<!--           placeholder="hidden"-->
+<!--           th:field="${startDate}"/> <br/>-->
+<!--    Returning Date-->
+<!--&lt;!&ndash;    <span th:if="${#fields.hasErrors('endDate')}"&ndash;&gt;-->
+<!--&lt;!&ndash;          th:errors="*{endDate}"> </span>&ndash;&gt;-->
+<!--    <input type="date" id="endDate" class="form-control"-->
+<!--           placeholder="..."-->
+<!--           th:field="${endDate}"/> <br/>-->
+<!--    Travelers-->
+<!--&lt;!&ndash;    <span th:if="${#fields.hasErrors('flightCapacity')}"&ndash;&gt;-->
+<!--&lt;!&ndash;          th:errors="*{flightCapacity}"> </span>&ndash;&gt;-->
 
-    <!--Airline: ${flight.operatingAirlines}<BR/>-->
-    <!--Departure City: ${flight.startLocation}<BR/>-->
-    <!--Arrival City: ${flight.arrivalCity}<BR/>-->
-    <!--Departing Date: ${flight.}-->
-    <!--Returning Date:-->
-    <!--drop down for travelers how many adults,
-    children, infants (display age)-->
-    <!--Travelers:-->
-    <!--preferred class:-->
-    <!--drop down for prefereed clas, first class, business, economy -->
-    <br/>
+<!--    <select class="custom-select">-->
+<!--        <option selected="Adults"> Adults</option>-->
+<!--        <option value="Children">Children</option>-->
+<!--        <option value="Infants">Infants</option>-->
+<!--        <div class="fadeout"></div>-->
+<!--    </select>-->
+<!--    &lt;!&ndash;<input type="date" id="endDate" class="form-control"&ndash;&gt;-->
+<!--    &lt;!&ndash;placeholder="..."&ndash;&gt;-->
+<!--    &lt;!&ndash;th:field="*{endDate}"/> <br/>&ndash;&gt;-->
 
-    <!--<div class="dropdown">-->
-    <!--<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuButton"-->
-    <!--data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-    <!--Preferred class-->
-    <!--</a>-->
-    <!--<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
-    <!--<a class="dropdown-item" href="#">First class</a>-->
-    <!--<a class="dropdown-item" href="#">Business  </a>-->
-    <!--<a class="dropdown-item" href="#">Economy/Coach</a>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<br>-->
-    <br> <br>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="flightClass">
-        <label class="form-check-label" for="inlineRadio1"> First class </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="flightClass">
-        <label class="form-check-label" for="inlineRadio2"> Business </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="flightClass">
-        <label class="form-check-label" for="inlineRadio3">Economy/Coach </label>
-    </div>
-    </form>
+<!--    &lt;!&ndash;Airline: ${flight.operatingAirlines}<BR/>&ndash;&gt;-->
+<!--    &lt;!&ndash;Departure City: ${flight.startLocation}<BR/>&ndash;&gt;-->
+<!--    &lt;!&ndash;Arrival City: ${flight.arrivalCity}<BR/>&ndash;&gt;-->
+<!--    &lt;!&ndash;Departing Date: ${flight.}&ndash;&gt;-->
+<!--    &lt;!&ndash;Returning Date:&ndash;&gt;-->
+<!--    &lt;!&ndash;drop down for travelers how many adults,-->
+<!--    children, infants (display age)&ndash;&gt;-->
+<!--    &lt;!&ndash;Travelers:&ndash;&gt;-->
+<!--    &lt;!&ndash;preferred class:&ndash;&gt;-->
+<!--    &lt;!&ndash;drop down for prefereed clas, first class, business, economy &ndash;&gt;-->
+<!--    <br/>-->
+
+<!--    &lt;!&ndash;<div class="dropdown">&ndash;&gt;-->
+<!--    &lt;!&ndash;<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuButton"&ndash;&gt;-->
+<!--    &lt;!&ndash;data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
+<!--    &lt;!&ndash;Preferred class&ndash;&gt;-->
+<!--    &lt;!&ndash;</a>&ndash;&gt;-->
+<!--    &lt;!&ndash;<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">&ndash;&gt;-->
+<!--    &lt;!&ndash;<a class="dropdown-item" href="#">First class</a>&ndash;&gt;-->
+<!--    &lt;!&ndash;<a class="dropdown-item" href="#">Business  </a>&ndash;&gt;-->
+<!--    &lt;!&ndash;<a class="dropdown-item" href="#">Economy/Coach</a>&ndash;&gt;-->
+<!--    &lt;!&ndash;</div>&ndash;&gt;-->
+<!--    &lt;!&ndash;</div>&ndash;&gt;-->
+<!--    &lt;!&ndash;<br>&ndash;&gt;-->
+<!--    <br> <br>-->
+<!--    <div class="form-check form-check-inline">-->
+<!--        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="flightClass">-->
+<!--        <label class="form-check-label" for="inlineRadio1"> First class </label>-->
+<!--    </div>-->
+<!--    <div class="form-check form-check-inline">-->
+<!--        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="flightClass">-->
+<!--        <label class="form-check-label" for="inlineRadio2"> Business </label>-->
+<!--    </div>-->
+<!--    <div class="form-check form-check-inline">-->
+<!--        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="flightClass">-->
+<!--        <label class="form-check-label" for="inlineRadio3">Economy/Coach </label>-->
+<!--    </div>-->
+<!--    </form>-->
     <br>
-    <a style="align-content: center" href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
-        Search </a>
+<!--    <a style="align-content: center" href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">-->
+<!--        Search </a>-->
     <a class="btn btn-primary" href="#" role="button">Flight Options</a>
 </div>
 </div>
