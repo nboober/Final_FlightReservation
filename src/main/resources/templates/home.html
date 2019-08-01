@@ -29,6 +29,7 @@
 <nav th:replace="base :: navbar"></nav>
 <div class="container">
     <br/><br/><br/><br/>
+
     <div class="jumbotron" th:each="flight : ${flights}">
         <hr class="my-4">
             <h6 th:text="${flight.startLocation}">Departure </h6>
@@ -44,9 +45,8 @@
             <p th:text="${flight.rewardPoints}"></p>
             <p th:text="${flight.discount}"></p>
             <a class="btn btn-primary" href="/payment" role="button">Select</a>
-
+    </div>
 </div>
-<div th:replace="base::footer"></div>
-</div>
+<div th:replace="base::javascript"></div>
 </body>
 </html>
