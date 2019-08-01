@@ -10,7 +10,37 @@
 <body>
 <div th:replace="base::navbar"></div>
 <div class="container">
+
+    <h2>Flight Information</h2>
+    <table class="table table-hover table-striped" style="width:100%">
+        <thead class="thead-light">
+        <tr>
+
+            <th>Departure Location</th>
+            <th>Arrival Location</th>
+            <th>Departure</th>
+            <th>Return</th>
+            <th>Round Trip</th>
+            <th sec:authorize="isAuthenticated()">Actions</th>
+        </tr>
+        </thead>
+
+        <!--enhanced for loop-->
+        <tr th:each="flight : ${flights}" th:object="${flight}">
+
+
+            <td>
+                <span th:href="@{/ticket/{id}(id=*{id})}" th:text="*{startLocation}"></span>
+            </td>
+
+        </tr>
+
+
+
     <h4 class="mb-2">How would you like to pay?</h4>
+
+
+
     <form autocomplete="off" action="#" th:action="@{/payment}" th:object="${user}" method="post">
         <!--<input th:field="*{id}" type="hidden"/>-->
 
