@@ -26,6 +26,9 @@ public class HomeController {
     @Autowired
     QRCodeRepository qrCodeRepository;
 
+    @Autowired
+    CardRepository cardRepository;
+
     //Home
     @RequestMapping("/")
     public String index(@Valid Flight flight, BindingResult result, Model model){
@@ -54,22 +57,25 @@ public class HomeController {
     }
 
     @PostMapping("/payment")
-    public String payment(@Valid User user, long id, BindingResult result, Model model){
-        model.addAttribute("user", userRepository.findById(id).get());
+    public String payment(@Valid Card card, long id, BindingResult result, Model model){
         model.addAttribute("flights", flightRepository.findAll());
         if(result.hasErrors()){
             return "payment";
         }
-        userService.saveUser(user);
+        model.addAttribute("flights", flightRepository.findAll());
+        model.addAttribute("user", userService.getUser());
+        card.setUser(userService.getUser());
+        cardRepository.save(card);
         return "ticket";
     }
 
     @RequestMapping("/ticket/{id}")
     public String ticketPrint(@PathVariable("id") long id,Model model){
-    model.addAttribute("user", userRepository.findById(id).get());
+//    model.addAttribute("user", userRepository.findById(id).get());
     model.addAttribute("flights", flightRepository.findAll());
-
+    model.addAttribute("user", userService.getUser());
     QRCodeGenerator qr = new QRCodeGenerator();
+    qr.setUser(userService.getUser());
     qrCodeRepository.save(qr);
     qr.getQR(id);
 

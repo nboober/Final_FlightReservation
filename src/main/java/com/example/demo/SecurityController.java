@@ -28,6 +28,7 @@ public class SecurityController {
     @GetMapping(value = "/register")
     public String showRegistration(Model model){
         model.addAttribute("user", new User());
+        model.addAttribute("card", new Card());
         return "registration";
     }
 
