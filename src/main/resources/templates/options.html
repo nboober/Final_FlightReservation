@@ -4,8 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <head th:replace="base :: head"></head>
 </head>
 <body>
+<nav th:replace="base :: navbar"></nav>
 <!--Edit search
 Time
 hours
@@ -13,7 +18,39 @@ start-end
 price
 details button -->
 <!--flight options bring flight detail to the top  -->
+<div class="container">
+    <br/><br/><br/><br/>
+    <form action="#" th:action="@{/flightoptions}"
+          th:object="${flight}" method="post">
 
+    <div class="jumbotron">
+        <h4>1h 38m (Nonstop) </h4>
+        <p> MCI-DFW</p>
+        <p>American Airlines 5831 operated by Mesa Airlines As American Eagle</p>
+        <a class="btn btn-primary" href="" role="button">Select</a>
+    </div>
+    <div class="jumbotron">
+        <h4>5h 5m (1 stop) </h4>
+        <p> MCI- 1h 7m in ORD-DFW</p>
+        <p>American Airlines 3104 operated by Skywest Airlines As American Eagle</p>
+        <a class="btn btn-primary" href="" role="button">Select</a>
+    </div>
+    <div class="jumbotron">
+        <h4>4h 21m (1 stop) </h4>
+        <p> MCI - 1h 9m in IAH - DFW</p>
+        <p>United 6285 operated by Mesa Airlines DBA United Express</p>
+        <a class="btn btn-primary" href="" role="button">Select</a>
+    </div>
+    <div class="jumbotron">
+        <h4>4h 21m (1 stop) </h4>
+        <p> MCI - 1h 9m in IAH - DFW</p>
+        <p>United 6285 operated by Mesa Airlines DBA United Express</p>
+        <a class="btn btn-primary" href="" role="button">Select</a>
+        <!--<a -->
+           <!--th:text="${flight.price}" th:href="@{detail_category/{id}(id=${category.categoryID})}"></a>-->
 
+    </div>
+    </form>
+</div>
 </body>
 </html>

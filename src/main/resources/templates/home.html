@@ -33,14 +33,20 @@
         <th>Arrival City</th>
         <th>Departure Date</th>
         <th>Returning Date </th>
+        <th>Start Time </th>
+        <th> End Time</th>
+        <th> RoundTrip </th>
+        <th> Flight Capacity </th>
         <th>flight class </th>
         <th>flight capacity</th>
         <th>Discount</th>
-        <th> </th>
     </tr>
+    <div typeof="text" aria-placeholder="airline"></div>
 <div th:each="flight: ${flights}">
         <tr>
             <td>${flight.operatingAirlines}</td>
+            <input type="text" placeholder="Search..">
+
             <td>${flight.startLocation}</td>
             <td>${flight.endLocation}</td>
             <td>${flight.startDate}</td>
