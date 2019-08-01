@@ -41,7 +41,7 @@
 <div th:each="flight: ${flights}">
         <tr>
             <td>${flight.operatingAirlines}</td>
-            <td>${flight.startLocation}</td>
+            <td>[[${flight.startLocation}]]</td>
             <td>${flight.endLocation}</td>
             <td>${flight.startDate}</td>
             <td></td>
@@ -50,6 +50,6 @@
         </tr>
 </div>
 </table>
-<div th:replace="base :: javascript"></div>
+<div th:replace="base :: footer"></div>
 </body>
 </html>

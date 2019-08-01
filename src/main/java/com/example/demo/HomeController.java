@@ -56,8 +56,14 @@ public class HomeController {
         return "options";
     }
 
+    @GetMapping("/payment")
+    public String createCard(Model model){
+        model.addAttribute("card", new Card());
+        return "payment";
+    }
+
     @PostMapping("/payment")
-    public String payment(@Valid Card card, long id, BindingResult result, Model model){
+    public String payment(@Valid Card card, BindingResult result, Model model){
         model.addAttribute("flights", flightRepository.findAll());
         if(result.hasErrors()){
             return "payment";
