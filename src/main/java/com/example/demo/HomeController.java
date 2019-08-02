@@ -23,16 +23,22 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> Nick
     @Autowired
     QRCodeRepository qrCodeRepository;
 
     @Autowired
     CardRepository cardRepository;
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> Nick
 
     //Home
     @RequestMapping("/")
@@ -68,18 +74,20 @@ public class HomeController {
     }
 
     @PostMapping("/payment")
-    public String payment(@Valid Card card, BindingResult result, Model model){
+    public String payment(@Valid Card card, @ModelAttribute("flight")Flight flight, BindingResult result, Model model){
         model.addAttribute("flights", flightRepository.findAll());
         if(result.hasErrors()){
             return "payment";
         }
         model.addAttribute("flights", flightRepository.findAll());
         model.addAttribute("user", userService.getUser());
+        flight.setUser(userService.getUser());
         card.setUser(userService.getUser());
         cardRepository.save(card);
         return "ticket";
     }
 
+<<<<<<< HEAD
 
 
 
@@ -96,6 +104,29 @@ public class HomeController {
     qr.setUser(userService.getUser());
     qrCodeRepository.save(qr);
     qr.getQR(id);
+=======
+    @RequestMapping("/updateFlight")
+    public String updateFlight(Model model){
+        model.addAttribute("flights", flightRepository.findAll());
+        return "home";
+    }
+
+    @RequestMapping("/cancelFlight/{id}")
+    public String cancelFlight(@PathVariable("id") long id, Model model){
+        flightRepository.deleteById(id);
+        return "home";
+    }
+
+    @RequestMapping("/ticket/{id}")
+    public String ticketPrint(@PathVariable("id") long id,Model model){
+//    model.addAttribute("user", userRepository.findById(id).get());
+        flightRepository.findAllByUser(userService.getUser());
+        model.addAttribute("user", userService.getUser());
+        QRCodeGenerator qr = new QRCodeGenerator();
+        qr.setUser(userService.getUser());
+        qrCodeRepository.save(qr);
+        qr.getQR(id);
+>>>>>>> Nick
 
         return "ticket";
     }

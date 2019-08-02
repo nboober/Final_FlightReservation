@@ -14,6 +14,8 @@ public class Flight {
 
     private int quantity;
 
+    private String seatType;
+
     private String startLocation;
 
     private String endLocation;
@@ -42,6 +44,10 @@ public class Flight {
 
     private boolean discount;
 
+    private String operatingAirline;
+
+    private String operatingAirport;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="user_id")
     private User user;
@@ -50,7 +56,9 @@ public class Flight {
 
     }
 
-    public Flight(String startLocation, String endLocation, double price, String startDate, String endDate, String startTime, String endTime, boolean roundTrip, boolean layover, String flightClass, int flightCapacity, int rewardPoints, boolean discount) {
+    public Flight(String operatingAirport, String operatingAirline, String startLocation, String endLocation, double price, String startDate, String endDate, String startTime, String endTime, boolean roundTrip, boolean layover, String flightClass, int flightCapacity, int rewardPoints, boolean discount) {
+        this.setOperatingAirport(operatingAirport);
+        this.setOperatingAirline(operatingAirline);
         this.setStartLocation(startLocation);
         this.setEndLocation(endLocation);
         this.setPrice(price);
@@ -208,5 +216,29 @@ public class Flight {
 
     public void setSearch(String search) {
         this.search = search;
+    }
+
+    public String getOperatingAirline() {
+        return operatingAirline;
+    }
+
+    public void setOperatingAirline(String operatingAirline) {
+        this.operatingAirline = operatingAirline;
+    }
+
+    public String getOperatingAirport() {
+        return operatingAirport;
+    }
+
+    public void setOperatingAirport(String operatingAirport) {
+        this.operatingAirport = operatingAirport;
+    }
+
+    public String getSeatType() {
+        return seatType;
+    }
+
+    public void setSeatType(String seatType) {
+        this.seatType = seatType;
     }
 }
