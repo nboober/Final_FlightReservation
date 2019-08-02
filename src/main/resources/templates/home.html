@@ -27,6 +27,7 @@
 </head>
 <body>
 <nav th:replace="base :: navbar"></nav>
+<<<<<<< HEAD
 <table>
     <tr><th>Airlines</th>
         <th>Departure City</th>
@@ -51,5 +52,28 @@
 </div>
 </table>
 <div th:replace="base :: footer"></div>
+=======
+<div class="container">
+    <br/><br/><br/><br/>
+
+    <div class="jumbotron" th:each="flight : ${flights}">
+        <hr class="my-4">
+            <h6 th:text="${flight.startLocation}">Departure </h6>
+            <h6 th:text="${flight.endLocation}"> Arrival </h6>
+            <p th:number="${flight.price}"> Price </p>
+            <p th:date="${flight.startDate}"> Departing date</p>
+            <p th:date="${flight.endDate}"> Returning date </p>
+            <p th:time="${flight.startTime}"> Departing time </p>
+            <p th:time="${flight.endTime}"> Returning time </p>
+            <p th:text="${flight.roundTrip}"> roundtrip </p>
+            <p th:text="${flight.layover}"> Layover</p>
+            <p th:number="${flight.flightCapacity}"></p>
+            <p th:text="${flight.rewardPoints}"></p>
+            <p th:text="${flight.discount}"></p>
+            <a class="btn btn-primary" href="/payment" role="button">Select</a>
+    </div>
+</div>
+<div th:replace="base::javascript"></div>
+>>>>>>> merry
 </body>
 </html>

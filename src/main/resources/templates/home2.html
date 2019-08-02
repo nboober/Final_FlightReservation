@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security"><head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+</head>
+<body>
+<nav th:replace="base :: navbar"></nav>
+<table>
+    <tr><th>Airlines</th>
+        <th>Departure City</th>
+        <th>Arrival City</th>
+        <th>Departure Date</th>
+        <th>Returning Date </th>
+        <th>Start Time </th>
+        <th> End Time</th>
+        <th> RoundTrip </th>
+        <th> Flight Capacity </th>
+        <th>flight class </th>
+        <th>flight capacity</th>
+        <th>Discount</th>
+    </tr>
+    <div typeof="text" aria-placeholder="airline"></div>
+    <div th:each="flight: ${flights}">
+        <tr>
+            <!--<td>${flight.operatingAirlines}</td>-->
+            <!--<input type="text" placeholder="Search..">-->
+
+            <td>${flight.startLocation}</td>
+            <td>${flight.endLocation}</td>
+            <td>${flight.startDate}</td>
+            <td>${flight.endDate}</td>
+            <td>${flight.startTime}</td>
+            <td>${flight.endTime}</td>
+            <td>${flight.roundTrip}</td>
+            <td>${flight.layover}</td>
+            <td>${flight.flightClass}</td>
+            <td>${flight.flightCapacity}</td>
+            <td></td>
+            <td><a href="showCompleteReservation?flightId=${flight.id}">Select</a></td>
+            <a class="btn btn-primary" href="/"> Search again</a>
+        </tr>
+    </div>
+</table>
+<div th:replace="base :: javascript"></div>
+</body>
+</html>
