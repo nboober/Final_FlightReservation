@@ -27,27 +27,26 @@
 </head>
 <body>
 <nav th:replace="base :: navbar"></nav>
-<table>
-    <tr><th>Airlines</th>
-        <th>Departure City</th>
-        <th>Arrival City</th>
-        <th>Departure Date</th>
-        <th>Returning Date </th>
-        <th>flight class </th>
-        <th>flight capacity</th>
-        <th>Discount</th>
-        <th> </th>
-    </tr>
-<div th:each="flight: ${flights}">
-        <tr>
-            <td>${flight.operatingAirlines}</td>
-            <td>[[${flight.startLocation}]]</td>
-            <td>${flight.endLocation}</td>
-            <td>${flight.startDate}</td>
-            <td></td>
-            <td><a href="showCompleteReservation?flightId=${flight.id}">Select</a></td>
-            <a href="/home"> search again</a>
-        </tr>
+<div class="container">
+    <br/><br/><br/><br/>
+
+    <div class="jumbotron" th:each="flight : ${flights}">
+        <hr class="my-4">
+            <p th:inline="text"> Departure Location <br> <b>[[${flight.startLocation}]] </b>  </p>
+        <p th:inline="text"> Arrival Location <br> <b>[[${flight.endLocation}]] </b> Price $ [[${flight.price}]] </p>
+            <p th:inline="text"> Departing Date<b> [[${flight.startDate}]]</b>  Returning Date <b>[[${flight.endDate}]]</b> </p>
+        <p th:inline="text"> Departing time <i>[[${flight.startTime}]]</i> Returning time <i> [[${flight.endTime}]]</i></p>
+            <!--<p th:time="${flight.endTime}"> Returning time </p>-->
+            <!--<p th:inline="""${flight.roundTrip}"> Round-trip </p>-->
+            <!--<p th:text="${flight.layover}"> Layover</p>-->
+        <p th:inline="text"> Flight capacity <i> [[${flight.flightCapacity}]] </i></p>
+        <p th:inline="text"> You have <i> [["${flight.rewardPoints}]]</i> reward points! </p>
+            <!--<p th:text="${flight.discount}"></p>-->
+        <br>
+        <h6> <b>Register select flights <a href="/register"> Register here</a>
+        or <a href="/login"> Sign in </a> </b> </h6>
+    </div>
+>>>>>>> merry
 </div>
 </table>
 <div th:replace="base :: footer"></div>
