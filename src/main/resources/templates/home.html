@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
-    <head th:replace="base :: head"></head>
+    <th:block th:insert="base :: Bootstrap"></th:block>
     <style>
         body {
             height: 100%;
@@ -54,6 +54,7 @@
             <p th:if="${flight.discount}"> You have a discount </p>
         <br>
 
+
         <h6 sec:authorize="!isAuthenticated()"> <b>Register to select flights </b> <a href="/register"> Register here</a>
             Already registered? <a href="/login"> Sign in </a> </b> </h6>
         <a sec:authorize="isAuthenticated()" class="btn btn-primary" href="/payment" role="button" > Select flight </a>
@@ -69,9 +70,12 @@
 
 
 
+
+
+
+    </div>
 </div>
 <div th:replace="base :: footer"></div>
-</div>
-
+>>>>>>> Nick
 </body>
 </html>
