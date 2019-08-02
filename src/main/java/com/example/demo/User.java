@@ -53,8 +53,8 @@ public class User {
     private String phone;
 
     @NotNull
-    @Size(min=8)
-    @Column(name="DOB")
+    @Size(min=2, max=10)
+    @Column(name="dateOfBirth")
     private String dateOfBirth;
 
     @NotNull
