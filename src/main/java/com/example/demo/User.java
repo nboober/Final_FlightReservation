@@ -48,12 +48,12 @@ public class User {
     private String username;
 
     @NotNull
-    @Size(min=2)
+    @Size(min=10)
     @Column(name = "phone")
     private String phone;
 
     @NotNull
-    @Size(min=2)
+    @Size(min=8)
     @Column(name="DOB")
     private String dateOfBirth;
 

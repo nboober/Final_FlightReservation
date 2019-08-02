@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -33,10 +34,12 @@ public class Card {
 
     @NotNull
     @Min(1)
+    @Max(12)
     private int cardExpMonth;
 
     @NotNull
-    @Min(1)
+    @Min(1800)
+    @Max(3000)
     private int cardExpYear;
 
     @ManyToOne(fetch = FetchType.EAGER)
