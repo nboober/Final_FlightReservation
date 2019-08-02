@@ -216,12 +216,15 @@ public class User {
 
     public String getTotalCost() {
         int total = 0;
+        int additionalCosts = 0;
 
         for(Flight flight : getFlight()){
 
+            if(flight.getSeatType() == "window"){
+                additionalCosts += 5;
+            }
 
-
-            total += (flight.getPrice() * flight.getQuantity());
+            total += ((flight.getPrice() + additionalCosts) * flight.getQuantity());
         }
 
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
