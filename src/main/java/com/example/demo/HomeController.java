@@ -73,6 +73,7 @@ public class HomeController {
         flight.setUser(userService.getUser());
         card.setUser(userService.getUser());
         cardRepository.save(card);
+        flightRepository.save(flight);
         return "ticket";
     }
 
