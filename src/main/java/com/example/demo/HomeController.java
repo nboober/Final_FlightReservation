@@ -63,13 +63,14 @@ public class HomeController {
     }
 
     @PostMapping("/payment")
-    public String payment(@Valid Card card, BindingResult result, Model model){
+    public String payment(@Valid Card card, @ModelAttribute("flight")Flight flight, BindingResult result, Model model){
         model.addAttribute("flights", flightRepository.findAll());
         if(result.hasErrors()){
             return "payment";
         }
         model.addAttribute("flights", flightRepository.findAll());
         model.addAttribute("user", userService.getUser());
+        flight.setUser(userService.getUser());
         card.setUser(userService.getUser());
         cardRepository.save(card);
         return "ticket";
