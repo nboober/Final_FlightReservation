@@ -66,7 +66,7 @@ public class HomeController {
         return "payment";
     }
 
-    @PostMapping("/payment")
+    @PostMapping("/payment/{id}")
     public String payment(@PathVariable("id") long id,
             @Valid Card card, @ModelAttribute Flight flight,
                           BindingResult result, Model model){
