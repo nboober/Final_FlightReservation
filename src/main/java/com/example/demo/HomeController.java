@@ -29,6 +29,12 @@ public class HomeController {
     @Autowired
     CardRepository cardRepository;
 
+
+
+
+
+
+
     //Home
     @RequestMapping("/")
     public String index(@Valid Flight flight, BindingResult result, Model model){
@@ -84,6 +90,14 @@ public class HomeController {
         return "ticket";
     }
 
+
+
+
+
+
+
+
+
     @RequestMapping("/updateFlight")
     public String updateFlight(Model model){
         model.addAttribute("flights", flightRepository.findAll());
@@ -105,6 +119,7 @@ public class HomeController {
         qr.setUser(userService.getUser());
         qrCodeRepository.save(qr);
         qr.getQR(id);
+
 
         return "ticket";
     }
@@ -136,7 +151,11 @@ public class HomeController {
         return "admin";
     }
 
-
+//Yun Created /about (contact page)
+@GetMapping("/about")
+public String getAbout() {
+    return "about";
+}
 
 
 

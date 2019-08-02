@@ -27,6 +27,10 @@
 </head>
 <body>
 <nav th:replace="base :: navbar"></nav>
+
+
+
+
 <div class="container">
     <br/><br/><br/><br/>
 
@@ -49,13 +53,31 @@
             reward points you can use towards your flight today. </p>
             <p th:if="${flight.discount}"> You have a discount </p>
         <br>
+
+
         <h6 sec:authorize="!isAuthenticated()"> <b>Register to select flights </b> <a href="/register"> Register here</a>
-        Already registered? <a href="/login"> Sign in </a> </b> </h6>
+
+            Already registered? <a href="/login"> Sign in </a> </b> </h6>
         <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/payment/{id}(id=${flight.id})}" role="button" > Select flight </a>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     </div>
 </div>
 <div th:replace="base :: footer"></div>
+
 </body>
 </html>

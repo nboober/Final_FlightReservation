@@ -20,14 +20,17 @@
 
             <th>Departure Location</th>
             <th>Arrival Location</th>
-            <th>Departure</th>
-            <th>Return</th>
+            <th>Departure Date</th>
+            <th>Return Date</th>
             <th>Round Trip</th>
+            <th>Price</th>
             <th sec:authorize="isAuthenticated()">Actions</th>
         </tr>
         </thead>
 
+
 <!--        enhanced for loop-->
+
         <tr th:each="flight : ${flights}">
 
 
@@ -36,26 +39,48 @@
 
             </td>
 
-        </tr>
+            <td>
+                <span th:text="${flight.startLocation}"></span>
+
+            </td>
+
+            <!--<td sec:authorize="isAuthenticated()">-->
+                <!--<div sec:authorize="hasAuthority('USER')">-->
+                    <!--<span th:if="${user.id == flight.user.id}">-->
+                        <!--<a th:href="@{/update/{id}(id=${flight.id})}">edit</a> - -->
+                        <!--<a th:href="@{/delete/{id}(id=${flight.id})}">Delete</a>-->
+                    <!--</span>-->
+                <!--</div>-->
+                <!--<div sec:authorize="hasAuthority('ADMIN')">-->
+
+                    <!--<a th:href="@{/update/{id}(id=${flight.id})}">edit</a> - -->
+                    <!--<a th:href="@{/delete/{id}(id=${flight.id})}">Delete</a>-->
+                <!--</div>-->
+            <!--</td>-->
+
+        <tr/>
     </table>
 
 
-    <h4 class="mb-2">How would you like to pay?</h4>
+    <!--<form autocomplete="off" action="#" th:action="@{/payment}" th:object="${card}" method="post">-->
 
+
+    <br/>
+    <br/>
+
+    <h2 class="mb-2">How would you like to pay?</h2>
 
 
 
     <form autocomplete="off" action="#" th:action="@{/payment}" th:object="${card}" method="post">
-
         <input th:field="*{id}" type="hidden"/>
 
 
             <div class="form-group">
-                <label for="cardNumber">Debit/Credit card Number</label>
-                <input type="text" class="form-control"
-                       id="cardNumber" placeholder=" "
+                <label for="cardNumber">Debit/Credit card Number <img src="https://res.cloudinary.com/duqszimh4/image/upload/c_thumb,w_200,g_face/v1564774511/credit-cards_fuhuaq.gif"> </label>
+                <input type="" class="form-control"
+                       id="cardNumber" placeholder="1234 "
                        th:field="*{cardNumber}">
-
                 <strong>
                     <span class="error-message"
                           th:errors="*{cardNumber}"
@@ -64,6 +89,90 @@
                     </span>
                 </strong>
             </div>
+        <div class="form-row">
+            <div class="form-group col-sm-6">
+                <label for="cardFirstName">Cardholder First Name</label>
+                <input type="text" class="form-control"
+                       id="cardFirstName" placeholder=" " th:field="*{cardFirstName}">
+                <strong>
+                    <span class="error-message"
+                          th:errors="*{cardFirstName}"
+                          th:if="${#fields.hasErrors('cardFirstName')}">
+                          Please enter the cardholder's name exactly as it appears on the card.
+                    </span>
+                </strong>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="cardLastName">Carholder Last Name</label>
+                <input type="text" class="form-control"
+                       id="cardLastName" placeholder=" " th:field="*{cardLastName}">
+                <strong>
+                    <span class="error-message"
+                          th:errors="*{cardLastName}"
+                          th:if="${#fields.hasErrors('cardLastName')}">
+                          Please enter the cardholder's name exactly as it appears on the card.
+                    </span>
+                </strong>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-sm-6">
+                <label for="securityCode">Security Code</label>
+                <input type="" class="form-control" id="securityCode"
+                       placeholder=" 999" th:field="*{securityCode}">
+                <strong>
+                    <span class="error-message"
+                          th:errors="*{securityCode}"
+                          th:if="${#fields.hasErrors('securityCode')}">
+                          Please enter a valid card security code.
+                    </span>
+                </strong>
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="cardExpMonth">Expiration month</label>
+                <input type="" class="form-control"
+                       id="cardExpMonth" placeholder=" 01" th:field="*{cardExpMonth}">
+                <strong>
+                    <span class="error-message"
+                          th:errors="*{cardExpMonth}"
+                          th:if="${#fields.hasErrors('cardExpMonth')}">
+                          Please choose a valid month.
+                    </span>
+                </strong>
+            </div>
+            <div class="form-group col-sm-2">
+                <label for="cardExpYear">Expiration year</label>
+                <input type="" class="form-control"
+                       id="cardExpYear" placeholder="2019 " th:field="*{cardExpYear}">
+                <strong>
+                    <span class="error-message"
+                          th:errors="*{cardExpYear}"
+                          th:if="${#fields.hasErrors('cardExpYear')}">
+                          Please choose a valid year.
+                    </span>
+                </strong>
+            </div>
+        </div>
+
+
+        <!--<input th:field="*{id}" type="hidden"/>-->
+
+
+            <!--<div class="form-group">-->
+                <!--<label for="cardNumber">Debit/Credit card Number</label>-->
+                <!--<input type="text" class="form-control"-->
+                       <!--id="cardNumber" placeholder=" "-->
+                       <!--th:field="*{cardNumber}">-->
+
+                <!--<strong>-->
+                    <!--<span class="error-message"-->
+                          <!--th:errors="*{cardNumber}"-->
+                          <!--th:if="${#fields.hasErrors('cardNumber')}">-->
+                          <!--Please enter a valid card number-->
+                    <!--</span>-->
+                <!--</strong>-->
+            <!--</div>-->
         <!--<div class="form-row">-->
             <!--<div class="form-group col-sm-6">-->
                 <!--<label for="cardFirstName">Cardholder First Name</label>-->
@@ -76,6 +185,7 @@
                        <!--id="cardLastName" placeholder=" ">-->
             <!--</div>-->
         <!--</div>-->
+
         <!--<div class="form-group">-->
             <!--<label for="myAddress">Address</label>-->
             <!--<input type="text" class="form-control"-->
@@ -86,23 +196,8 @@
             <!--<input type="text" class="form-control"-->
                    <!--id="myAddress2" placeholder="Apartment, studio, or floor">-->
         <!--</div>-->
-        <!--<div class="form-row">-->
-            <!--<div class="form-group col-sm-6">-->
-                <!--<label for="myCity">City</label>-->
-                <!--<input type="text" class="form-control" id="myCity">-->
-            <!--</div>-->
-            <!--<div class="form-group col-sm-4">-->
-                <!--<label for="myState">State</label>-->
-                <!--<select id="myState" class="form-control">-->
-                    <!--<option selected>Choose...</option>-->
-                    <!--<option>...</option>-->
-                <!--</select>-->
-            <!--</div>-->
-            <!--<div class="form-group col-sm-2">-->
-                <!--<label for="myZip">Zip</label>-->
-                <!--<input type="text" class="form-control" id="myZip">-->
-            <!--</div>-->
-        <!--</div>-->
+
+
         <!--<div class="form-group">-->
             <!--<div class="form-check">-->
                 <!--<input class="form-check-input" type="checkbox" id="myCheck">-->
@@ -112,8 +207,12 @@
             <!--</div>-->
         <!--</div>-->
         <button type="submit" class="btn btn-primary">Complete Booking</button>
-    <!--</form>-->
-<!--</div>-->
+
+    </form>
+
+
+</div>
+
 
 
 
