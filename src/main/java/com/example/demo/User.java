@@ -48,13 +48,13 @@ public class User {
     private String username;
 
     @NotNull
-    @Size(min=2)
+    @Size(min=10)
     @Column(name = "phone")
     private String phone;
 
     @NotNull
-    @Size(min=2)
-    @Column(name="DOB")
+    @Size(min=2, max=10)
+    @Column(name="dateOfBirth")
     private String dateOfBirth;
 
     @NotNull
@@ -216,12 +216,15 @@ public class User {
 
     public String getTotalCost() {
         int total = 0;
+        int additionalCosts = 0;
 
         for(Flight flight : getFlight()){
 
+            if(flight.getSeatType() == "window"){
+                additionalCosts += 5;
+            }
 
-
-            total += (flight.getPrice() * flight.getQuantity());
+            total += ((flight.getPrice() + additionalCosts) * flight.getQuantity());
         }
 
         NumberFormat formatter = NumberFormat.getCurrencyInstance();

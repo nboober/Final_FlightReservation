@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
+      xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
@@ -14,6 +14,7 @@
 
     <h2>Flight Information</h2>
     <table class="table table-hover table-striped" style="width:100%">
+<!--        th:field="*{flight_id}" type="hidden"-->
         <thead class="thead-light">
         <tr>
 
@@ -27,66 +28,41 @@
         </tr>
         </thead>
 
-        <!--enhanced for loop-->
-        <!--<tr th:if="${#lists.size(user.getFlight()>0)}" th:each="flight : ${user.getFlight()}">-->
+
+<!--enhanced for loop-->
+
+        <tr th:each="flight : ${flights}">
 
 
-            <!--<td>-->
-                <!--<span th:text="${flight.getStartLocation()}"></span>-->
+            <td>
+                <span th:text="${flight.startLocation}"></span>
+
+            </td>
+
+            <td>
+                <span th:text="${flight.startLocation}"></span>
+
+            </td>
+
+            <!--<td sec:authorize="isAuthenticated()">-->
+                <!--<div sec:authorize="hasAuthority('USER')">-->
+                    <!--<span th:if="${user.id == flight.user.id}">-->
+                        <!--<a th:href="@{/update/{id}(id=${flight.id})}">edit</a> - -->
+                        <!--<a th:href="@{/delete/{id}(id=${flight.id})}">Delete</a>-->
+                    <!--</span>-->
+                <!--</div>-->
+                <!--<div sec:authorize="hasAuthority('ADMIN')">-->
+
+                    <!--<a th:href="@{/update/{id}(id=${flight.id})}">edit</a> - -->
+                    <!--<a th:href="@{/delete/{id}(id=${flight.id})}">Delete</a>-->
+                <!--</div>-->
             <!--</td>-->
-
-        <!--</tr>-->
-
-        <tr th:each="flight : ${flights}" th:object="${flight}">
-
-
-            <td>
-                <span th:href="@{/ticket/{id}(id=*{id})}" th:text="*{startLocation}"></span>
-            </td>
-            <td>
-
-                <a th:href="@{/ticket/{id}(id=*{id})}" th:text="*{endLocation}"></a>
-            </td>
-            <td>
-
-                <a th:href="@{/ticket/{id}(id=*{id})}" th:text="*{startDate}"></a>
-            </td>
-            <td>
-
-                <a th:href="@{/ticket/{id}(id=*{id})}" th:text="*{endDate}"></a>
-            </td>
-            <td>
-
-                <a th:href="@{/ticket/{id}(id=*{id})}" th:text="*{roundTrip}"></a>
-            </td>
-
-            <td>
-
-                <a th:href="@{/ticket/{id}(id=*{id})}" th:text="*{price}"></a>
-            </td>
-
-            <td>
-                <strong>
-                    <span th:href="@{/user/{id}(id=*{user.id})}">[[*{user.firstName}]]</span>
-                </strong>
-            </td>
-
-            <td sec:authorize="isAuthenticated()">
-                <div sec:authorize="hasAuthority('USER')">
-                    <span th:if="${user.id == flight.user.id}">
-                        <a th:href="@{/update/{id}(id=${flight.id})}">edit</a> -
-                        <a th:href="@{/delete/{id}(id=${flight.id})}">Delete</a>
-                    </span>
-                </div>
-                <div sec:authorize="hasAuthority('ADMIN')">
-
-                    <a th:href="@{/update/{id}(id=${flight.id})}">edit</a> -
-                    <a th:href="@{/delete/{id}(id=${flight.id})}">Delete</a>
-                </div>
-            </td>
 
         <tr/>
     </table>
+
+
+    <!--<form autocomplete="off" action="#" th:action="@{/payment}" th:object="${card}" method="post">-->
 
 
     <br/>
@@ -101,7 +77,7 @@
 
 
             <div class="form-group">
-                <label for="cardNumber">Debit/Credit card Number</label>
+                <label for="cardNumber">Debit/Credit card Number <img src="https://res.cloudinary.com/duqszimh4/image/upload/c_thumb,w_200,g_face/v1564774511/credit-cards_fuhuaq.gif"> </label>
                 <input type="" class="form-control"
                        id="cardNumber" placeholder="1234 "
                        th:field="*{cardNumber}">
@@ -179,6 +155,37 @@
             </div>
         </div>
 
+
+        <!--<input th:field="*{id}" type="hidden"/>-->
+
+
+            <!--<div class="form-group">-->
+                <!--<label for="cardNumber">Debit/Credit card Number</label>-->
+                <!--<input type="text" class="form-control"-->
+                       <!--id="cardNumber" placeholder=" "-->
+                       <!--th:field="*{cardNumber}">-->
+
+                <!--<strong>-->
+                    <!--<span class="error-message"-->
+                          <!--th:errors="*{cardNumber}"-->
+                          <!--th:if="${#fields.hasErrors('cardNumber')}">-->
+                          <!--Please enter a valid card number-->
+                    <!--</span>-->
+                <!--</strong>-->
+            <!--</div>-->
+        <!--<div class="form-row">-->
+            <!--<div class="form-group col-sm-6">-->
+                <!--<label for="cardFirstName">Cardholder First Name</label>-->
+                <!--<input type="cardFirstName" class="form-control"-->
+                       <!--id="cardFirstName" placeholder=" ">-->
+            <!--</div>-->
+            <!--<div class="form-group col-sm-6">-->
+                <!--<label for="cardLastName">Carholder Last Name</label>-->
+                <!--<input type="cardLastName" class="form-control"-->
+                       <!--id="cardLastName" placeholder=" ">-->
+            <!--</div>-->
+        <!--</div>-->
+
         <!--<div class="form-group">-->
             <!--<label for="myAddress">Address</label>-->
             <!--<input type="text" class="form-control"-->
@@ -200,8 +207,12 @@
             <!--</div>-->
         <!--</div>-->
         <button type="submit" class="btn btn-primary">Complete Booking</button>
+
     </form>
+
+
 </div>
+
 
 
 
@@ -210,6 +221,6 @@
 <br/>
 
 </div>
-</body>
 <div th:replace="base::footer"></div>
+</body>
 </html>

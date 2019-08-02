@@ -14,6 +14,8 @@ public class Flight {
 
     private int quantity;
 
+    private String seatType;
+
     private String startLocation;
 
     private String endLocation;
@@ -230,5 +232,13 @@ public class Flight {
 
     public void setOperatingAirport(String operatingAirport) {
         this.operatingAirport = operatingAirport;
+    }
+
+    public String getSeatType() {
+        return seatType;
+    }
+
+    public void setSeatType(String seatType) {
+        this.seatType = seatType;
     }
 }

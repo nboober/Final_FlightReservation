@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta charset="UTF-8">
     <title>Payment</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
+
+<head >
+
+
     <th:block th:insert="base :: Bootstrap"></th:block>
 </head>
 <body>
@@ -89,10 +94,17 @@
 <!--    </div>-->
 
     <button type="submit" class="btn btn-primary">Submit</button>
+
     <br>
 </form>
     </div>
 </div>
+
+
+</form>
+
+<div th:replace="base :: footer"></div>
+
 </body>
 <div th:replace="base::footer"></div>
 </html>
