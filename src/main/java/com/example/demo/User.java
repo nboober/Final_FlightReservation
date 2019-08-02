@@ -64,18 +64,19 @@ public class User {
 
     @NotNull
     @Size(min=2)
-    @Column(name="card_First_Name")
-    private String cardFirstName;
+    private String address;
 
     @NotNull
     @Size(min=2)
-    @Column(name="card_Last_Name")
-    private String cardLastName;
+    private String city;
 
     @NotNull
-    @Min(1)
-    @Column(name="cardNumber")
-    private long cardNumber;
+    @Size(min=2)
+    private String state;
+
+    @NotNull
+    @Size(min=2)
+    private String zipcode;
 
     private double totalCost;
 
@@ -90,12 +91,15 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     public Set<QRCodeGenerator> qrCode;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    public Set<Card> card;
+
 
     public User(){
 
     }
 
-    public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String phone, String dateOfBirth, String originCountry){
+    public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String phone, String dateOfBirth, String originCountry, String address, String city, String state, String zipcode){
         this.setEmail(email);
         this.setPassword(password);
         this.setFirstName(firstName);
@@ -105,21 +109,11 @@ public class User {
         this.setPhone(phone);
         this.setDateOfBirth(dateOfBirth);
         this.setOriginCountry(originCountry);
-    }
+        this.setAddress(address);
+        this.setCity(city);
+        this.setState(state);
+        this.setZipcode(zipcode);
 
-    public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String phone, String dateOfBirth, String originCountry, String cardFirstName, String cardLastName, long cardNumber){
-        this.setEmail(email);
-        this.setPassword(password);
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
-        this.setEnabled(enabled);
-        this.setUsername(username);
-        this.setPhone(phone);
-        this.setDateOfBirth(dateOfBirth);
-        this.setOriginCountry(originCountry);
-        this.setCardFirstName(cardFirstName);
-        this.setCardLastName(cardLastName);
-        this.setCardNumber(cardNumber);
     }
 
     public long getId() {
@@ -212,30 +206,6 @@ public class User {
         this.originCountry = originCountry;
     }
 
-    public String getCardFirstName() {
-        return cardFirstName;
-    }
-
-    public void setCardFirstName(String cardFirstName) {
-        this.cardFirstName = cardFirstName;
-    }
-
-    public String getCardLastName() {
-        return cardLastName;
-    }
-
-    public void setCardLastName(String cardLastName) {
-        this.cardLastName = cardLastName;
-    }
-
-    public long getCardNumber() {
-        return cardNumber;
-    }
-
-    public void setCardNumber(long cardNumber) {
-        this.cardNumber = cardNumber;
-    }
-
     public Set<Flight> getFlight() {
         return flight;
     }
@@ -271,5 +241,53 @@ public class User {
 
     public void setQRCode(Set<QRCodeGenerator> QRCode) {
         this.qrCode = QRCode;
+    }
+
+    public Set<QRCodeGenerator> getQrCode() {
+        return qrCode;
+    }
+
+    public void setQrCode(Set<QRCodeGenerator> qrCode) {
+        this.qrCode = qrCode;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public Set<Card> getCard() {
+        return card;
+    }
+
+    public void setCard(Set<Card> card) {
+        this.card = card;
     }
 }
