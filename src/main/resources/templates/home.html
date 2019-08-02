@@ -32,21 +32,28 @@
 
     <div class="jumbotron" th:each="flight : ${flights}">
         <hr class="my-4">
-            <p th:inline="text"> Departure Location <br> <b>[[${flight.startLocation}]] </b>  </p>
-        <p th:inline="text"> Arrival Location <br> <b>[[${flight.endLocation}]] </b> Price $ [[${flight.price}]] </p>
-            <p th:inline="text"> Departing Date<b> [[${flight.startDate}]]</b>  Returning Date <b>[[${flight.endDate}]]</b> </p>
-        <p th:inline="text"> Departing time <i>[[${flight.startTime}]]</i> Returning time <i> [[${flight.endTime}]]</i></p>
-            <!--<p th:time="${flight.endTime}"> Returning time </p>-->
-            <!--<p th:inline="""${flight.roundTrip}"> Round-trip </p>-->
-            <!--<p th:text="${flight.layover}"> Layover</p>-->
-        <p th:inline="text"> Flight capacity <i> [[${flight.flightCapacity}]] </i></p>
-        <p th:inline="text"> You have <i> [["${flight.rewardPoints}]]</i> reward points! </p>
-            <!--<p th:text="${flight.discount}"></p>-->
+        <h5> Flight details</h5> <br><br>
+        <p th:inline="text"> Operating Airport <br> <b>[[${flight.operatingAirport}]]</b></p>
+        <p> Operating Airline <br> <b> [[${flight.operatingAirline}]]</b>  </p>
+        <p th:inline="text"> Departure Location <br> <b>[[${flight.startLocation}]] </b>  </p>
+        <p th:inline="text"> Arrival Location <br> <b>[[${flight.endLocation}]]  </b>
+        <p> Price $[[${flight.price}]] </p>
+            <p th:inline="text"> Departing Date<b> [[${flight.startDate}]]</b>
+                Returning Date <b>[[${flight.endDate}]]</b> </p>
+        <p th:inline="text"> Departing time <i>[[${flight.startTime}]]</i>
+            Returning time <i> [[${flight.endTime}]]</i></p>
+            <p th:if="${flight.roundTrip == true }"> This flight is round trip. </p>
+            <p th:if="${flight.layover == true}"> There is a Layover</p>
+        <p th:inline="text"> Flight capacity <i>[[${flight.flightCapacity}]]</i></p>
+        <p th:inline="text"> You have <i> [[${flight.rewardPoints}]]</i>
+            reward points you can use towards your flight today. </p>
+            <p th:if="${flight.discount}"> You have a discount </p>
         <br>
-        <h6> <b>Register select flights <a href="/register"> Register here</a>
-        or <a href="/login"> Sign in </a> </b> </h6>
-    </div>
+        <h6> <b>Register to select flights </b> <a href="/register"> Register here</a>
+        Already registered? <a href="/login"> Sign in </a> </b> </h6>
+
 </div>
-<div th:replace="base::javascript"></div>
+<div th:replace="base :: footer"></div>
+</div>
 </body>
 </html>
