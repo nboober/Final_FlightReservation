@@ -1,49 +1,107 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/extras/spring-security"><head>
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+    <title>Home/Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 
+    <style>
+        body {
+            height: 100%;
+            background-image: url("https://res.cloudinary.com/dgogsuupz/image/upload/v1564593581/background_xpahh7.jpg");
+            background-position: center;
+            /*background-repeat: repeat;*/
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        @media (min-width: 500px) {
+            .jumbotron {
+                padding: 1rem 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<nav th:replace="base :: navbar"></nav>
-<table>
-    <tr><th>Airlines</th>
-        <th>Departure City</th>
-        <th>Arrival City</th>
-        <th>Departure Date</th>
-        <th>Returning Date </th>
-        <th>Start Time </th>
-        <th> End Time</th>
-        <th> RoundTrip </th>
-        <th> Flight Capacity </th>
-        <th>flight class </th>
-        <th>flight capacity</th>
-        <th>Discount</th>
-    </tr>
-    <div typeof="text" aria-placeholder="airline"></div>
-    <div th:each="flight: ${flights}">
-        <tr>
-            <!--<td>${flight.operatingAirlines}</td>-->
-            <!--<input type="text" placeholder="Search..">-->
+<div class="container">
+    <br/><br/><br/><br/>
+    <div class="jumbotron">
+        <h4>Complete reservation</h4>
+        <h1 class="display-4"></h1>
+        <p class="lead"></p>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <button class="btn btn-secondary active">
+                <input type="radio" name="options" id="option1" autocomplete="off" checked style=
+                        "color:blue" onclick="setColor('button', '#101010')"> Roundtrip
+            </button>
+            <button class="btn btn-secondary">
+                <input type="radio" name="options" id="option2" autocomplete="off"> One Way
+            </button>
+            <button class="btn btn-secondary">
+                <input type="radio" name="options" id="option3" autocomplete="off"> Multi-City
+            </button>
+        </div>
+        <br> <br>
 
-            <td>${flight.startLocation}</td>
-            <td>${flight.endLocation}</td>
-            <td>${flight.startDate}</td>
-            <td>${flight.endDate}</td>
-            <td>${flight.startTime}</td>
-            <td>${flight.endTime}</td>
-            <td>${flight.roundTrip}</td>
-            <td>${flight.layover}</td>
-            <td>${flight.flightClass}</td>
-            <td>${flight.flightCapacity}</td>
-            <td></td>
-            <td><a href="showCompleteReservation?flightId=${flight.id}">Select</a></td>
-            <a class="btn btn-primary" href="/"> Search again</a>
-        </tr>
+        <form autocomplete="on"
+              action="#"
+              th:action="@{/home}"
+              th:object="${flight}"
+              method="post">
+            Departure City
+            <span th:if="${#fields.hasErrors('startLocation')}"
+                  th:errors="*{startLocation}"> </span>
+            <input type="text" class="form-control" id="startLocation" placeholder="City or airport"
+                   th:field="*{startLocation}"/> <br/>
+            Arrival City
+            <span th:if="${#fields.hasErrors('endLocation')}"
+                  th:errors="*{endLocation}"> </span>
+            <input type="text" class="form-control" id="endLocation" placeholder="City or Airport"
+                   th:field="*{endLocation}"/> <br/>
+            Departing Date
+            <span th:if="${#fields.hasErrors('startDate')}"
+                  th:errors="*{startDate}"> </span>
+            <input type="date" id="startDate" class="form-control"
+                   placeholder="hidden"
+                   th:field="*{startDate}"/> <br/>
+            Returning Date
+            <span th:if="${#fields.hasErrors('endDate')}"
+                  th:errors="*{endDate}"> </span>
+            <input type="date" id="endDate" class="form-control"
+                   placeholder="..."
+                   th:field="*{endDate}"/> <br/>
+            Travelers
+            <span th:if="${#fields.hasErrors('flightCapacity')}"
+                  th:errors="*{flightCapacity}"> </span>
+
+            <select class="custom-select">
+                <option selected="one"> Adults</option>
+                <option value="two">Children</option>
+                <option value="three">Infants</option>
+                <!--<div class="fadeout"></div>-->
+            </select>
+            <br> <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="flightClass">
+                <label class="form-check-label" for="inlineRadio1"> First class </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="flightClass">
+                <label class="form-check-label" for="inlineRadio2"> Business </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="flightClass">
+                <label class="form-check-label" for="inlineRadio3">Economy/Coach </label>
+            </div>
+        </form>
+        <br>
+        <a style="align-content: center" href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
+            Search </a>
+        <a class="btn btn-primary" href="#" role="button">Flight Options</a>
     </div>
-</table>
-<div th:replace="base :: footer"></div>
+</div>
 </body>
 </html>

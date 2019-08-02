@@ -11,50 +11,35 @@
 </head>
 <body>
 <nav th:replace="base :: navbar"></nav>
-<!--Edit search
-Time
-hours
-start-end
-price
-details button -->
-<!--flight options bring flight detail to the top  -->
+<!--<form action="#"-->
+      <!--th:action="@{/flightoptions}"-->
+      <!--th:object="${flight}"-->
+      <!--method="post">-->
 <div class="container">
     <br/><br/><br/><br/>
-    <form action="#"
-          th:action="@{/flightoptions}"
-          th:object="${flight}"
-          method="post">
 
-    <div class="jumbotron">
-        <a class="btn btn-primary" href="/"> Edit Search</a>
+    <div class="jumbotron" th:each="flight : ${flights}">
         <hr class="my-4">
-        <h4>1h 38m (Nonstop) </h4>
-        <p> MCI-DFW</p>
-        <p>American Airlines 5831 operated by Mesa Airlines As American Eagle</p>
-        <a class="btn btn-primary" href="/payment" role="button">Select</a>
-    </div>
-    <div class="jumbotron">
-        <h4>5h 5m (1 stop) </h4>
-        <p> MCI- 1h 7m in ORD-DFW</p>
-        <p>American Airlines 3104 operated by Skywest Airlines As American Eagle</p>
-        <a class="btn btn-primary" href="/payment" role="button">Select</a>
-    </div>
-    <div class="jumbotron">
-        <h4>4h 21m (1 stop) </h4>
-        <p> MCI - 1h 9m in IAH - DFW</p>
-        <p>United 6285 operated by Mesa Airlines DBA United Express</p>
-        <a class="btn btn-primary" href="/payment" role="button">Select</a>
-    </div>
-    <div class="jumbotron">
-        <h4>4h 21m (1 stop) </h4>
-        <p> MCI - 1h 9m in IAH - DFW</p>
-        <p>United 6285 operated by Mesa Airlines DBA United Express</p>
-        <a class="btn btn-primary" href="/payment" role="button">Select</a>
-        <!--<a -->
-           <!--th:text="${flight.price}" th:href="@{detail_category/{id}(id=${category.categoryID})}"></a>-->
+        <h5> Flight details</h5> <br><br>
+        <p th:inline="text"> Operating Airport <br> <b>[[${flight.operatingAirport}]]</b></p>
+        <p> Operating Airline <br> <b> [[${flight.operatingAirline}]]</b>  </p>
+        <p th:inline="text"> Departure Location <br> <b>[[${flight.startLocation}]] </b>  </p>
+        <p th:inline="text"> Arrival Location <br> <b>[[${flight.endLocation}]]  </b>
+        <p> Price $[[${flight.price}]] </p>
+        <p th:inline="text"> Departing Date<b> [[${flight.startDate}]]</b>
+            Returning Date <b>[[${flight.endDate}]]</b> </p>
+        <p th:inline="text"> Departing time <i>[[${flight.startTime}]]</i>
+            Returning time <i> [[${flight.endTime}]]</i></p>
+        <p th:if="${flight.roundTrip == true }"> This flight is round trip. </p>
+        <p th:if="${flight.layover == true}"> There is a Layover</p>
+        <p th:inline="text"> Flight capacity <i>[[${flight.flightCapacity}]]</i></p>
+        <p th:inline="text"> You have <i> [[${flight.rewardPoints}]]</i>
+            reward points you can use towards your flight today. </p>
+        <p th:if="${flight.discount}"> You have a discount </p>
+        <br>
+        <a class="btn btn-primary" href="/payment" role="button" > Select flight </a>
 
     </div>
-    </form>
 </div>
 <div th:replace="base :: footer"></div>
 </body>
