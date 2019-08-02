@@ -37,32 +37,32 @@
 
         <!--</tr>-->
 
-        <tr th:each="flight : ${flights}" th:object="${flight}">
+        <tr th:each="flight : ${flights}">
 
 
             <td>
-                <span th:href="@{/ticket/{id}(id=*{id})}" th:text="*{startLocation}"></span>
+                <span th:text="${flight.startLocation}"></span>
             </td>
             <td>
 
-                <a th:href="@{/ticket/{id}(id=*{id})}" th:text="*{endLocation}"></a>
+                <a th:href="@{/flight/{id}(id=*{id})}" th:text="*{endLocation}"></a>
             </td>
             <td>
 
-                <a th:href="@{/ticket/{id}(id=*{id})}" th:text="*{startDate}"></a>
+                <a th:href="@{/flight/{id}(id=*{id})}" th:text="*{startDate}"></a>
             </td>
             <td>
 
-                <a th:href="@{/ticket/{id}(id=*{id})}" th:text="*{endDate}"></a>
+                <a th:href="@{/flight/{id}(id=*{id})}" th:text="*{endDate}"></a>
             </td>
             <td>
 
-                <a th:href="@{/ticket/{id}(id=*{id})}" th:text="*{roundTrip}"></a>
+                <a th:href="@{/flight/{id}(id=*{id})}" th:text="*{roundTrip}"></a>
             </td>
 
             <td>
 
-                <a th:href="@{/ticket/{id}(id=*{id})}" th:text="*{price}"></a>
+                <a th:href="@{/flight/{id}(id=*{id})}" th:text="*{price}"></a>
             </td>
 
             <td>
