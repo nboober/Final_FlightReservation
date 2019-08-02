@@ -11,25 +11,25 @@
 </head>
 <body>
 <nav th:replace="base :: navbar"></nav>
-<!--<form action="#"-->
-      <!--th:action="@{/flightoptions}"-->
-      <!--th:object="${flight}"-->
-      <!--method="post">-->
 <div class="container">
     <br/><br/><br/><br/>
 
     <div class="jumbotron" th:each="flight : ${flights}">
         <hr class="my-4">
         <h5> Flight details</h5> <br><br>
-        <p th:inline="text"> Operating Airport <br> <b>[[${flight.operatingAirport}]]</b></p>
-        <p> Operating Airline <br> <b> [[${flight.operatingAirline}]]</b>  </p>
-        <p th:inline="text"> Departure Location <br> <b>[[${flight.startLocation}]] </b>  </p>
+
+        <p class="text-left" th:inline="text"> <i>[[${flight.startTime}]]</i>
+           - <i> [[${flight.endTime}]]</i></p>
+        <p align="left">  [[${flight.operatingAirline}]]  </p>
+        <p align="left" th:inline="text"> [[${flight.operatingAirport}]]</p>
+        <!--<p> Operating Airline <br> <b> [[${flight.operatingAirline}]]</b>  </p>-->
+        <p align="center" th:inline="text"> Departure Location <br> <b>[[${flight.startLocation}]] </b>  </p>
         <p th:inline="text"> Arrival Location <br> <b>[[${flight.endLocation}]]  </b>
         <p> Price $[[${flight.price}]] </p>
         <p th:inline="text"> Departing Date<b> [[${flight.startDate}]]</b>
             Returning Date <b>[[${flight.endDate}]]</b> </p>
-        <p th:inline="text"> Departing time <i>[[${flight.startTime}]]</i>
-            Returning time <i> [[${flight.endTime}]]</i></p>
+        <!--<p th:inline="text"> Departing time <i>[[${flight.startTime}]]</i>-->
+            <!--Returning time <i> [[${flight.endTime}]]</i></p>-->
         <p th:if="${flight.roundTrip == true }"> This flight is round trip. </p>
         <p th:if="${flight.layover == true}"> There is a Layover</p>
         <p th:inline="text"> Flight capacity <i>[[${flight.flightCapacity}]]</i></p>

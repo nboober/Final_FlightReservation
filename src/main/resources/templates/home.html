@@ -3,7 +3,7 @@
       xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Home/Search</title>
+    <title>Flight details </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
@@ -33,22 +33,22 @@
 
     <div class="jumbotron" th:each="flight : ${flights}">
         <hr class="my-4">
-        <h5> Flight details</h5> <br><br>
-        <p th:inline="text"> Operating Airport <br> <b>[[${flight.operatingAirport}]]</b></p>
-        <p> Operating Airline <br> <b> [[${flight.operatingAirline}]]</b>  </p>
-        <p th:inline="text"> Departure Location <br> <b>[[${flight.startLocation}]] </b>  </p>
-        <p th:inline="text"> Arrival Location <br> <b>[[${flight.endLocation}]]  </b>
-        <p> Price $[[${flight.price}]] </p>
-            <p th:inline="text"> Departing Date<b> [[${flight.startDate}]]</b>
-                Returning Date <b>[[${flight.endDate}]]</b> </p>
-        <p th:inline="text"> Departing time <i>[[${flight.startTime}]]</i>
-            Returning time <i> [[${flight.endTime}]]</i></p>
-            <p th:if="${flight.roundTrip == true }"> This flight is round trip. </p>
-            <p th:if="${flight.layover == true}"> There is a Layover</p>
-        <p th:inline="text"> Flight capacity <i>[[${flight.flightCapacity}]]</i></p>
-        <p th:inline="text"> You have <i> [[${flight.rewardPoints}]]</i>
+        <h5> Flight details</h5> <br>
+        <p class="text-left"> From [[${flight.startLocation}]] - To [[${flight.endLocation}]]  </p>
+        <p class="text-left"> [[${flight.startDate}]] -
+            [[${flight.endDate}]] </p>
+        <p class="text-left"> [[${flight.startTime}]]
+            - <i> [[${flight.endTime}]]</i></p>
+        <p class="text-left"> Price $[[${flight.price}]] </p>
+        <p class="text-left">  [[${flight.operatingAirline}]]  </p>
+        <p class="text-left"> <i> [[${flight.operatingAirport}]] </i> </p>
+        <p class="text-left"> From [[${flight.startLocation}]] - To [[${flight.endLocation}]]  </p>
+        <p th:if="${flight.roundTrip == true }"> This flight is round trip. </p>
+        <p th:if="${flight.layover == true}"> There is a Layover</p>
+        <p th:inline="text"> Flight capacity [[${flight.flightCapacity}]]</p>
+        <p th:inline="text"> You have [[${flight.rewardPoints}]]
             reward points you can use towards your flight today. </p>
-            <p th:if="${flight.discount}"> You have a discount </p>
+            <p th:if="${flight.discount == true}"> You have a discount </p>
         <br>
         <h6 sec:authorize="!isAuthenticated()"> <b>Register to select flights </b> <a href="/register"> Register here</a>
         Already registered? <a href="/login"> Sign in </a> </b> </h6>
@@ -57,6 +57,6 @@
 
     </div>
 </div>
-<div th:replace="base :: footer"></div>
 </body>
+<div th:replace="base :: footer"></div>
 </html>

@@ -8,28 +8,29 @@
     <h3>Secure Page</h3>
     <a href="/logout">Logout</a>
 
+<div class="container-fluid">
 <h4>First Name</h4>
 <p th:text="${user.firstName}"></p>
-
+    <br>
 <h4>Last Name</h4>
 <p th:text="${user.lastName}"></p>
-
+    <br>
 <h4>Email</h4>
 <p th:text="${user.email}"></p>
-
+    <br>
 <h4>Username</h4>
 <p th:text="${user.username}"></p>
-
+    <br>
 <h4>Password</h4>
 <p th:text="${user.password}"></p>
-
+    <br>
 <h4>Roles</h4>
 <div th:each="role : ${user.getRoles()}">
     <p th:text="${role.getRole()}"></p>
 </div>
-
-<a th:href="@{/update/{id} (id=${user.id})}">Update Profile</a>
-
-<div th:replace="base :: javascript"></div>
+    <br>
+<a class="text-center" th:href="@{/update/{id} (id=${user.id})}">Update Profile</a>
+</div>
+<div th:replace="base::footer"></div>
 </body>
 </html>
