@@ -78,6 +78,7 @@ public class HomeController {
 
     @RequestMapping("/ticket/{id}")
     public String ticketPrint(@PathVariable("id") long id,Model model){
+
 //    model.addAttribute("user", userRepository.findById(id).get());
     model.addAttribute("flights", flightRepository.findAll());
     model.addAttribute("user", userService.getUser());
@@ -116,7 +117,11 @@ public class HomeController {
         return "admin";
     }
 
-
+    //Yun Created /about (contact page)
+    @GetMapping("/about")
+    public String getAbout() {
+    return "about";
+}
 
 
 
