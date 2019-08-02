@@ -76,15 +76,27 @@ public class HomeController {
         return "ticket";
     }
 
+    @RequestMapping("/updateFlight")
+    public String updateFlight(Model model){
+        model.addAttribute("flights", flightRepository.findAll());
+        return "home";
+    }
+
+    @RequestMapping("/cancelFlight/{id}")
+    public String cancelFlight(@PathVariable("id") long id, Model model){
+        flightRepository.deleteById(id);
+        return "home";
+    }
+
     @RequestMapping("/ticket/{id}")
     public String ticketPrint(@PathVariable("id") long id,Model model){
 //    model.addAttribute("user", userRepository.findById(id).get());
-    model.addAttribute("flights", flightRepository.findAll());
-    model.addAttribute("user", userService.getUser());
-    QRCodeGenerator qr = new QRCodeGenerator();
-    qr.setUser(userService.getUser());
-    qrCodeRepository.save(qr);
-    qr.getQR(id);
+        flightRepository.findAllByUser(userService.getUser());
+        model.addAttribute("user", userService.getUser());
+        QRCodeGenerator qr = new QRCodeGenerator();
+        qr.setUser(userService.getUser());
+        qrCodeRepository.save(qr);
+        qr.getQR(id);
 
         return "ticket";
     }
