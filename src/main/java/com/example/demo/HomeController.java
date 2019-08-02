@@ -23,11 +23,21 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
+<<<<<<< HEAD
     @Autowired
     QRCodeRepository qrCodeRepository;
 
     @Autowired
     CardRepository cardRepository;
+=======
+//<<<<<<< HEAD
+
+
+//=======
+    @Autowired
+    QRCodeRepository qrCodeRepository;
+//>>>>>>> 9c7ba6b7507dfb9793c8cc7a19eec3e40bdf05e9
+>>>>>>> merry
 
     //Home
     @RequestMapping("/")
@@ -76,9 +86,26 @@ public class HomeController {
         return "ticket";
     }
 
+<<<<<<< HEAD
     @RequestMapping("/ticket/{id}")
     public String ticketPrint(@PathVariable("id") long id,Model model){
 //    model.addAttribute("user", userRepository.findById(id).get());
+=======
+//<<<<<<< HEAD
+    //payment information
+    @RequestMapping("/payment")
+    public String about(){
+        return "payment";
+    }
+
+    @RequestMapping("/ticket")
+    public String ticketPrint(long id,Model model){}
+//=======
+    @RequestMapping("/ticket/{id}")
+    public String ticketPrint(@PathVariable("id") long id,Model model){
+//>>>>>>> 9c7ba6b7507dfb9793c8cc7a19eec3e40bdf05e9
+    model.addAttribute("user", userRepository.findById(id).get());
+>>>>>>> merry
     model.addAttribute("flights", flightRepository.findAll());
     model.addAttribute("user", userService.getUser());
     QRCodeGenerator qr = new QRCodeGenerator();
