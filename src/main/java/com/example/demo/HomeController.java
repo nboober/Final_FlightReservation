@@ -81,7 +81,7 @@ public class HomeController {
         if(result.hasErrors()){
             return "payment";
         }
-        flight.setUser(Collections.singleton(userService.getUser()));
+        flight.setUser(userService.getUser());
         flightRepository.save(flight);
 
         model.addAttribute("user", userService.getUser());
