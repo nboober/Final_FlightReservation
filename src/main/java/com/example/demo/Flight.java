@@ -18,6 +18,8 @@ public class Flight {
 
     private int seatNumber;
 
+    private int seatTypeCapacity;
+
     private int flightCapacity;
 
     private String seatClass;
@@ -249,5 +251,23 @@ public class Flight {
 
     public void setSeatClass(String seatClass) {
         this.seatClass = seatClass;
+    }
+
+    public int getSeatTypeCapacity() {
+        int seatTypeCapacity = 0;
+
+        if(this.getSeatClass() == "first"){
+            seatTypeCapacity = 20;
+        }else if(this.getSeatClass() == "economy"){
+            seatTypeCapacity = 100;
+        }else if(this.getSeatClass() == "business"){
+            seatTypeCapacity = 100;
+        }
+
+        return seatTypeCapacity;
+    }
+
+    public void setSeatTypeCapacity(int seatTypeCapacity) {
+        this.seatTypeCapacity = seatTypeCapacity;
     }
 }
