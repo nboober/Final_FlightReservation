@@ -40,16 +40,16 @@ public class DataLoader implements CommandLineRunner {
         user.setRoles(Arrays.asList(adminRole, userRole));
         userRepository.save(user);
 
-        Flight dallasToDC = new Flight("Dallas Love Field", "American Airlines", "Dallas, TX", "Dulles International, Washington D.C.", 300.00, "10/16/2019", "10/16/2019", "9:00am", "10:00pm", false, false, "Business", 300, 25, false);
+        Flight dallasToDC = new Flight("Dallas Love Field", "American Airlines", "Dallas, TX", "Dulles International, Washington D.C.", 300.00, "10/16/2019", "10/16/2019", "9:00am", "10:00pm", false, false, 300, 25, false);
         flightRepository.save(dallasToDC);
 
-        Flight dcToDallas1 = new Flight("Dulles International","United Airlines", "Washington D.C.", "Dallas, TX", 350.00, "10/17/2019", "10/17/2019", "10:00am", "11:00pm", false, false, "Business", 300, 25, false);
+        Flight dcToDallas1 = new Flight("Dulles International","United Airlines", "Washington D.C.", "Dallas, TX", 350.00, "10/17/2019", "10/17/2019", "10:00am", "11:00pm", false, false,  300, 25, false);
         flightRepository.save(dcToDallas1);
 
-        Flight dcToDallas2 = new Flight("Dulles International", "United Airlines", "Washington D.C.", "Dallas, TX", 800.00, "10/16/2019", "10/26/2019", "9:00am", "10:00pm", true, false, "Business", 300, 25, false);
+        Flight dcToDallas2 = new Flight("Dulles International", "United Airlines", "Washington D.C.", "Dallas, TX", 800.00, "10/16/2019", "10/26/2019", "9:00am", "10:00pm", true, false,  300, 25, false);
         flightRepository.save(dcToDallas2);
 
-        Flight dcToFlorida = new Flight("Dulles International", "American Airlines", "Washington D.C.", "Miami, FL", 150.00, "12/08/2019", "12/08/2019", "4:15pm", "6:00pm", false, false, "Business", 300, 25, true);
+        Flight dcToFlorida = new Flight("Dulles International", "American Airlines", "Washington D.C.", "Miami, FL", 150.00, "12/08/2019", "12/08/2019", "4:15pm", "6:00pm", false, false,  300, 25, true);
         flightRepository.save(dcToFlorida);
 
 

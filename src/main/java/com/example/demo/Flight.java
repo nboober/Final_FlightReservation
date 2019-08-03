@@ -20,6 +20,8 @@ public class Flight {
 
     private int flightCapacity;
 
+    private String seatClass;
+
     private String startLocation;
 
     private String endLocation;
@@ -37,8 +39,6 @@ public class Flight {
     private boolean roundTrip;
 
     private boolean layover;
-
-    private String flightClass;
 
     private int layoverDuration;
 
@@ -58,7 +58,7 @@ public class Flight {
 
     }
 
-    public Flight(String operatingAirport, String operatingAirline, String startLocation, String endLocation, double price, String startDate, String endDate, String startTime, String endTime, boolean roundTrip, boolean layover, String flightClass, int flightCapacity, int rewardPoints, boolean discount) {
+    public Flight(String operatingAirport, String operatingAirline, String startLocation, String endLocation, double price, String startDate, String endDate, String startTime, String endTime, boolean roundTrip, boolean layover, int flightCapacity, int rewardPoints, boolean discount) {
         this.setOperatingAirport(operatingAirport);
         this.setOperatingAirline(operatingAirline);
         this.setStartLocation(startLocation);
@@ -70,7 +70,6 @@ public class Flight {
         this.setEndTime(endTime);
         this.setRoundTrip(roundTrip);
         this.setLayover(layover);
-        this.setFlightClass(flightClass);
         this.setFlightCapacity(flightCapacity);
         this.setRewardPoints(rewardPoints);
         this.setDiscount(discount);
@@ -154,14 +153,6 @@ public class Flight {
 
     public void setLayover(boolean layover) {
         this.layover = layover;
-    }
-
-    public String getFlightClass() {
-        return flightClass;
-    }
-
-    public void setFlightClass(String flightClass) {
-        this.flightClass = flightClass;
     }
 
     public int getLayoverDuration() {
@@ -250,5 +241,13 @@ public class Flight {
 
     public void setSeatNumber(int seatNumber) {
         this.seatNumber = seatNumber;
+    }
+
+    public String getSeatClass() {
+        return seatClass;
+    }
+
+    public void setSeatClass(String seatClass) {
+        this.seatClass = seatClass;
     }
 }
