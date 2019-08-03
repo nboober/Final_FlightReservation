@@ -16,6 +16,10 @@ public class Flight {
 
     private String seatType;
 
+    private int seatNumber;
+
+    private int flightCapacity;
+
     private String startLocation;
 
     private String endLocation;
@@ -37,8 +41,6 @@ public class Flight {
     private String flightClass;
 
     private int layoverDuration;
-
-    private int flightCapacity;
 
     private int rewardPoints;
 
@@ -240,5 +242,13 @@ public class Flight {
 
     public void setSeatType(String seatType) {
         this.seatType = seatType;
+    }
+
+    public int getSeatNumber() {
+        return seatNumber;
+    }
+
+    public void setSeatNumber(int seatNumber) {
+        this.seatNumber = seatNumber;
     }
 }

@@ -92,13 +92,6 @@ public class HomeController {
     }
 
 
-
-
-
-
-
-
-
     @RequestMapping("/updateFlight")
     public String updateFlight(Model model){
         model.addAttribute("flights", flightRepository.findAll());
@@ -106,7 +99,7 @@ public class HomeController {
     }
 
     @RequestMapping("/cancelFlight/{id}")
-    public String cancelFlight(@PathVariable("id") long id, Model model){
+    public String cancelFlight(@PathVariable("id") long id){
         flightRepository.deleteById(id);
         return "home";
     }
@@ -120,7 +113,6 @@ public class HomeController {
         qr.setUser(userService.getUser());
         qrCodeRepository.save(qr);
         qr.getQR(id);
-
 
         return "ticket";
     }
@@ -150,6 +142,35 @@ public class HomeController {
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("roles", roleRepository.findAll());
         return "admin";
+    }
+
+    @RequestMapping("/addNewCard")
+    public String addNewCard(Model model){
+        model.addAttribute("card", new Card());
+
+        return "card";
+    }
+
+    @RequestMapping("/updateCard/{id}")
+    public String updateCard(@PathVariable("id") long id, Model model){
+        model.addAttribute("card", cardRepository.findById(id));
+        return "card";
+    }
+
+    @PostMapping("/processCard")
+    public String processCard(@Valid Card card, BindingResult result){
+        if(result.hasErrors()){
+            return "card";
+        }
+        card.setUser(userService.getUser());
+        cardRepository.save(card);
+        return "userProfile";
+    }
+
+    @RequestMapping("/deleteCard/{id}")
+    public String deleteCard(@PathVariable("id") long id){
+        cardRepository.deleteById(id);
+        return "userProfile";
     }
 
 //Yun Created /about (contact page)
