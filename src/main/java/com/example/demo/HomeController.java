@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collections;
 
 @Controller
 public class HomeController {
@@ -80,7 +81,7 @@ public class HomeController {
         if(result.hasErrors()){
             return "payment";
         }
-        flight.setUser(userService.getUser());
+        flight.setUser(Collections.singleton(userService.getUser()));
         flightRepository.save(flight);
 
         model.addAttribute("user", userService.getUser());

@@ -80,13 +80,13 @@ public class User {
 
     private double totalCost;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(joinColumns = @JoinColumn(name="user_id"),
             inverseJoinColumns = @JoinColumn(name="role_id"))
     private Collection<Role> roles;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    public Set<Flight> flight;
+    @ManyToMany
+    private Collection<Flight> flight;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     public Set<QRCodeGenerator> qrCode;
@@ -206,14 +206,6 @@ public class User {
         this.originCountry = originCountry;
     }
 
-    public Set<Flight> getFlight() {
-        return flight;
-    }
-
-    public void setFlight(Set<Flight> flight) {
-        this.flight = flight;
-    }
-
     public String getTotalCost() {
         int total = 0;
         int additionalCosts = 0;
@@ -292,5 +284,13 @@ public class User {
 
     public void setCard(Set<Card> card) {
         this.card = card;
+    }
+
+    public Collection<Flight> getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Collection<Flight> flight) {
+        this.flight = flight;
     }
 }

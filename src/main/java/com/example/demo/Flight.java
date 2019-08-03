@@ -2,6 +2,8 @@ package com.example.demo;
 
 import javax.persistence.*;
 import java.text.NumberFormat;
+import java.util.Collection;
+import java.util.Set;
 
 @Entity
 public class Flight {
@@ -48,9 +50,8 @@ public class Flight {
 
     private String operatingAirport;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="user_id")
-    private User user;
+    @ManyToMany(mappedBy = "flight")
+    private Collection<User> user;
 
     public Flight(){
 
@@ -186,14 +187,6 @@ public class Flight {
         this.rewardPoints = rewardPoints;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public int getQuantity() {
         return quantity;
     }
@@ -240,5 +233,13 @@ public class Flight {
 
     public void setSeatType(String seatType) {
         this.seatType = seatType;
+    }
+
+    public Collection<User> getUser() {
+        return user;
+    }
+
+    public void setUser(Collection<User> user) {
+        this.user = user;
     }
 }
