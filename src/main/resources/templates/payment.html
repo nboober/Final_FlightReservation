@@ -70,8 +70,8 @@
             <td sec:authorize="isAuthenticated()">
                 <div sec:authorize="hasAuthority('USER')">
 <!--                    <span th:if="${user.id == flight.id}">-->
-                        <a th:href="@{/updateFlight(id=${flight.id})}">Update</a> -
-                        <a th:href="@{/cancelFlight/{id}(id=${flight.id})}">Cancel</a>
+                        <a th:href="@{/updateFlight}">Update</a> -
+                        <a th:href="@{/cancelFlight}">Cancel</a>
 <!--                    </span>-->
                 </div>
 <!--                <div sec:authorize="hasAuthority('ADMIN')">-->

@@ -74,9 +74,8 @@ public class HomeController {
     }
 
     @PostMapping("/payment")
-    public String payment(@PathVariable("id") long id,
-            @Valid Card card, @ModelAttribute Flight flight,
-                          BindingResult result, Model model){
+    public String payment(@Valid Card card, @ModelAttribute Flight flight,
+                          BindingResult result){
 //        model.addAttribute("flights", flightRepository.findAllByUser(userService.getUser()));
         if(result.hasErrors()){
             return "payment";
@@ -84,8 +83,6 @@ public class HomeController {
         flight.setUser(userService.getUser());
         flightRepository.save(flight);
 
-        model.addAttribute("user", userService.getUser());
-        model.addAttribute("flight", flightRepository.findById(id).get());
         card.setUser(userService.getUser());
         cardRepository.save(card);
         return "ticket";
@@ -98,21 +95,21 @@ public class HomeController {
         return "home";
     }
 
-    @RequestMapping("/cancelFlight/{id}")
-    public String cancelFlight(@PathVariable("id") long id){
-        flightRepository.deleteById(id);
+    @RequestMapping("/cancelFlight")
+    public String cancelFlight(Model model){
+        model.addAttribute("flights", flightRepository.findAll());
         return "home";
     }
 
-    @RequestMapping("/ticket{id}")
-    public String ticketPrint(@PathVariable("id") long id,Model model){
+    @RequestMapping("/ticket")
+    public String ticketPrint(Model model){
 //    model.addAttribute("user", userRepository.findById(id).get());
-        flightRepository.findAllByUser(userService.getUser());
+        model.addAttribute("flights", flightRepository.findAllByUser(userService.getUser()));
         model.addAttribute("user", userService.getUser());
-        QRCodeGenerator qr = new QRCodeGenerator();
-        qr.setUser(userService.getUser());
-        qrCodeRepository.save(qr);
-        qr.getQR(id);
+//        QRCodeGenerator qr = new QRCodeGenerator();
+//        qr.setUser(userService.getUser());
+//        qrCodeRepository.save(qr);
+//        qr.getQR(id);
 
         return "ticket";
     }
