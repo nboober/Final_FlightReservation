@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Detail</title>
+    <th:block th:insert="base :: Bootstrap"></th:block>
+</head>
+<body>
+<nav th:replace="base :: navbar"></nav>
+
+
+<div class="container">
+
+    <h2>Flight Information</h2>
+    <table class="table table-hover table-striped" style="width:100%">
+
+        <thead class="thead-light">
+        <tr>
+
+            <th>Departure Location</th>
+            <th>Arrival Location</th>
+            <th>Departure Date</th>
+            <th>Return Date</th>
+            <th>Price</th>
+            <th>Seat</th>
+
+        </tr>
+        </thead>
+
+
+
+
+        <tr th:each="flight : ${flights}">
+
+
+            <td>
+                <span th:text="${flight.startLocation}"></span>
+
+            </td>
+
+            <td>
+                <span th:text="${flight.endLocation}"></span>
+
+            </td>
+
+            <td>
+                <span th:text="${flight.startDate}"></span>
+
+            </td>
+
+            <td>
+                <span th:text="${flight.endDate}"></span>
+
+            </td>
+
+
+
+
+            <td>
+                <span th:text="${flight.price}"></span>
+
+            </td>
+
+            <td>
+                <span th:text="${flight.seatTypeCapacity}"></span>
+
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

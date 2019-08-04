@@ -22,8 +22,8 @@
             <th>Arrival Location</th>
             <th>Departure Date</th>
             <th>Return Date</th>
-            <th>Round Trip</th>
             <th>Price</th>
+            <th>Seat</th>
             <th sec:authorize="isAuthenticated()">Actions</th>
         </tr>
         </thead>
@@ -40,8 +40,44 @@
             </td>
 
             <td>
-                <span th:text="${flight.startLocation}"></span>
+                <span th:text="${flight.endLocation}"></span>
 
+            </td>
+
+            <td>
+                <span th:text="${flight.startDate}"></span>
+
+            </td>
+
+            <td>
+                <span th:text="${flight.endDate}"></span>
+
+            </td>
+
+
+
+
+            <td>
+                <span th:text="${flight.price}"></span>
+
+            </td>
+
+            <td>
+                <span th:text="${flight.seatTypeCapacity}"></span>
+
+            </td>
+
+            <td sec:authorize="isAuthenticated()">
+                <div sec:authorize="hasAuthority('USER')">
+<!--                    <span th:if="${user.id == flight.id}">-->
+                        <a th:href="@{/updateFlight(id=${flight.id})}">Update</a> -
+                        <a th:href="@{/cancelFlight/{id}(id=${flight.id})}">Cancel</a>
+<!--                    </span>-->
+                </div>
+<!--                <div sec:authorize="hasAuthority('ADMIN')">-->
+<!--                    <a th:href="@{/updateFlight/{id}(id=${flight.id})}">edit</a> - -->
+<!--                    <a th:href="@{/cancelFlight/{id}(id=${flight.id})}">Delete</a>-->
+<!--                </div>-->
             </td>
 
             <!--<td sec:authorize="isAuthenticated()">-->
@@ -206,7 +242,7 @@
                 <!--</label>-->
             <!--</div>-->
         <!--</div>-->
-        <button type="submit" class="btn btn-primary">Complete Booking</button>
+        <a href="/ticket" class="btn btn-primary">Complete Booking</a>
 
     </form>
 

@@ -104,7 +104,7 @@ public class HomeController {
         return "home";
     }
 
-    @RequestMapping("/ticket/{id}")
+    @RequestMapping("/ticket{id}")
     public String ticketPrint(@PathVariable("id") long id,Model model){
 //    model.addAttribute("user", userRepository.findById(id).get());
         flightRepository.findAllByUser(userService.getUser());

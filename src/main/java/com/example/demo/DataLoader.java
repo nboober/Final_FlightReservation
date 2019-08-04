@@ -22,6 +22,10 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+    //Yun Add
+    @Autowired
+    UserService userService;
+
     @Override
     public void run(String... strings) throws Exception{
         roleRepository.save(new Role("USER"));
