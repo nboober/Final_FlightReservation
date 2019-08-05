@@ -70,7 +70,6 @@ public class HomeController {
             return "home";
         }
 
-        System.out.println("old flight is " + id);
         Flight f = flightRepository.findById(id).get();
         f.setQuantity(flight.getQuantity());
         f.setSeatClass(flight.getSeatClass());
@@ -111,8 +110,11 @@ public class HomeController {
 
 
     @RequestMapping("/updateFlight")
-    public String updateFlight(Model model){
+    public String updateFlight(@ModelAttribute Flight flight, Model model){
         model.addAttribute("flights", flightRepository.findAll());
+        flight.setQuantity(0);
+        flight.setSeatClass(null);
+        flight.setSeatType(null);
         return "home";
     }
 
