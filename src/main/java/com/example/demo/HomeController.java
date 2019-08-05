@@ -124,7 +124,7 @@ public class HomeController {
     public String ticketPrint(Model model){
 //    model.addAttribute("user", userRepository.findById(id).get());
         model.addAttribute("flights", flightRepository.findAllByUser(userService.getUser()));
-//        model.addAttribute("user", userService.getUser());
+        model.addAttribute("user", userService.getUser());
 //        QRCodeGenerator qr = new QRCodeGenerator();
 //        qr.setUser(userService.getUser());
 //        qrCodeRepository.save(qr);

@@ -13,6 +13,8 @@ public class Flight {
 
     private String search;
 
+    private double totalCost;
+
     @Max(220)
     private int quantity;
 
@@ -85,6 +87,38 @@ public class Flight {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getTotalCost() {
+        int total = 0;
+        int additionalCosts = 0;
+
+
+
+            if(this.getSeatType() == "window"){
+                additionalCosts += 5;
+            }
+
+            if(this.getSeatClass() == "first"){
+                additionalCosts += 100;
+            }
+
+            if(this.getSeatClass() == "business"){
+                additionalCosts += 50;
+            }
+
+            total += ((this.getPrice() + additionalCosts) * this.getQuantity());
+
+
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String totalFormat = formatter.format(total);
+
+
+        return totalFormat;
+    }
+
+    public void setTotalCost(double totalCost) {
+        this.totalCost = totalCost;
     }
 
     public String getStartLocation() {

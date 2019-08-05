@@ -214,39 +214,6 @@ public class User {
         this.flight = flight;
     }
 
-    public String getTotalCost() {
-        int total = 0;
-        int additionalCosts = 0;
-
-
-        for(Flight flight : getFlight()){
-
-            if(flight.getSeatType() == "window"){
-                additionalCosts += 5;
-            }
-
-            if(flight.getSeatClass() == "first"){
-                additionalCosts += 100;
-            }
-
-            if(flight.getSeatClass() == "business"){
-                additionalCosts += 50;
-            }
-
-            total += ((flight.getPrice() + additionalCosts) * flight.getQuantity());
-        }
-
-        NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        String totalFormat = formatter.format(total);
-
-
-        return totalFormat;
-    }
-
-    public void setTotalCost(double totalCost) {
-        this.totalCost = totalCost;
-    }
-
     public Set<QRCodeGenerator> getQRCode() {
         return qrCode;
     }
