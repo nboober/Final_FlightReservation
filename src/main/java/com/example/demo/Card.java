@@ -24,21 +24,23 @@ public class Card {
     private String cardLastName;
 
     @NotNull
-    @Min(1)
+//    @Min(1)
+//    @Max(17)
     @Column(name="cardNumber")
     private long cardNumber;
 
     @NotNull
-    @Min(1)
+//    @Min(1)
+    @Max(999)
     private int securityCode;
 
     @NotNull
-    @Min(1)
+//    @Min(1)
     @Max(12)
     private int cardExpMonth;
 
     @NotNull
-    @Min(1800)
+//    @Min(1800)
     @Max(3000)
     private int cardExpYear;
 

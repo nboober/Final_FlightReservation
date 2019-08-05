@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import java.text.NumberFormat;
 
 @Entity
@@ -12,6 +13,7 @@ public class Flight {
 
     private String search;
 
+    @Max(220)
     private int quantity;
 
     private String seatType;
