@@ -22,9 +22,10 @@
             <th>Arrival Location</th>
             <th>Departure Date</th>
             <th>Return Date</th>
-            <th>Price</th>
             <th>Class</th>
+            <th>Quantity</th>
             <th>Round Trip</th>
+            <th>Price</th>
             <th sec:authorize="isAuthenticated()">Actions</th>
         </tr>
         </thead>
@@ -33,9 +34,6 @@
 <!--        enhanced for loop-->
 
         <tr>
-
-
-
             <td>
                 <span th:text="${flight.startLocation}"></span>
 
@@ -56,16 +54,13 @@
 
             </td>
 
-
-
-
-            <!--<td>-->
-                <!--<span th:text="${user.totalCost}"></span>-->
-
-            <!--</td>-->
-
             <td>
                 <span th:text="${flight.seatClass}"></span>
+
+            </td>
+
+            <td>
+                <span th:text="${flight.quantity}"></span>
 
             </td>
 
@@ -75,6 +70,15 @@
             <div th:if="${flight.roundTrip == false}">
                 <td>No</td>
             </div>
+
+
+            <!--<td>-->
+            <!--<span th:text="${flight.user.getTotalCost()}"></span>-->
+
+            <!--</td>-->
+
+
+
             <td sec:authorize="isAuthenticated()">
                 <div sec:authorize="hasAuthority('USER')">
 <!--                    <span th:if="${user.id == flight.id}">-->
@@ -88,24 +92,8 @@
 <!--                </div>-->
             </td>
 
-            <!--<td sec:authorize="isAuthenticated()">-->
-                <!--<div sec:authorize="hasAuthority('USER')">-->
-                    <!--<span th:if="${user.id == flight.user.id}">-->
-                        <!--<a th:href="@{/update/{id}(id=${flight.id})}">edit</a> - -->
-                        <!--<a th:href="@{/delete/{id}(id=${flight.id})}">Delete</a>-->
-                    <!--</span>-->
-                <!--</div>-->
-                <!--<div sec:authorize="hasAuthority('ADMIN')">-->
+        </tr>
 
-                    <!--<a th:href="@{/update/{id}(id=${flight.id})}">edit</a> - -->
-                    <!--<a th:href="@{/delete/{id}(id=${flight.id})}">Delete</a>-->
-                <!--</div>-->
-            <!--</td>-->
-
-<!--        <tr/>-->
-<!--    </table>-->
-
-        <tr/>
     </table>
 
     <br/>
