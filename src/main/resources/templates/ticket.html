@@ -24,7 +24,7 @@
             <th>Departure Date</th>
             <th>Return Date</th>
             <th>Price</th>
-            <th>Seat</th>
+            <th>Quantity</th>
 
         </tr>
         </thead>
@@ -33,7 +33,6 @@
 
 
         <tr th:each="flight : ${flights}">
-
 
             <td>
                 <span th:text="${flight.startLocation}"></span>
@@ -64,7 +63,7 @@
             </td>
 
             <td>
-                <span th:text="${flight.seatTypeCapacity}"></span>
+                <span th:text="${flight.quantity}"></span>
 
             </td>
         </tr>
