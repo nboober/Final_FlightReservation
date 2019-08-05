@@ -57,7 +57,7 @@ public class HomeController {
     }
 
     @PostMapping("/processFlight")
-    public String processFlight(@Valid @ModelAttribute("flight") Flight flight, add .
+    public String processFlight(@Valid @ModelAttribute("flight") Flight flight,
                                 @RequestParam("flightId") long id,
                                 BindingResult result, Model model){
         if(result.hasErrors()){
