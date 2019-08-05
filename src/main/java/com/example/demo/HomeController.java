@@ -63,8 +63,19 @@ public class HomeController {
         return "options";
     }
 
-    @RequestMapping("/payment/{id}")
-    public String createCard(@PathVariable("id") long id,
+    @PostMapping("/processFlight")
+    public String processFlight(@Valid Flight flight, BindingResult result){
+        if(result.hasErrors()){
+            return "home";
+        }
+
+        flightRepository.save(flight);
+
+        return "redirect:/payment";
+    }
+
+    @RequestMapping("/payment")
+    public String createCard(@RequestParam("id") long id,
                              @ModelAttribute Flight flight, Model model){
 
         model.addAttribute("flight", flightRepository.findById(id).get());
