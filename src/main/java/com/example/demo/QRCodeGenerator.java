@@ -52,7 +52,7 @@ public class QRCodeGenerator {
     public static void main(String[] args)
     {
         try {
-            generateQRCodeImage("/localhost:8080/confirm", 350, 350, QR_CODE_IMAGE_PATH);
+            generateQRCodeImage("https://secret-tundra-24215.herokuapp.com/", 350, 350, QR_CODE_IMAGE_PATH);
         } catch (WriterException e) {
             System.out.println("Could not generate QR Code, WriterException :: " + e.getMessage());
         } catch (IOException e) {
