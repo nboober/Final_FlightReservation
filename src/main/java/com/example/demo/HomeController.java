@@ -96,8 +96,11 @@ public class HomeController {
     }
 
     @RequestMapping("/cancelFlight")
-    public String cancelFlight(Model model){
+    public String cancelFlight(@ModelAttribute Flight flight, Model model){
         model.addAttribute("flights", flightRepository.findAll());
+        flight.setQuantity(0);
+        flight.setSeatClass(null);
+        flight.setSeatType(null);
         return "home";
     }
 
