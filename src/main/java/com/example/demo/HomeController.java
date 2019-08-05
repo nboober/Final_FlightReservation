@@ -86,7 +86,7 @@ public class HomeController {
 
         card.setUser(userService.getUser());
         cardRepository.save(card);
-        return "ticket";
+        return "redirect:/ticket";
     }
 
 
