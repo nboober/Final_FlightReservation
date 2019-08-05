@@ -95,15 +95,15 @@ public class Flight {
 
 
 
-            if(this.getSeatType() == "window"){
+            if(this.getSeatType().equals("window")){
                 additionalCosts += 5;
             }
 
-            if(this.getSeatClass() == "first"){
+            if(this.getSeatClass().equals("first")){
                 additionalCosts += 100;
             }
 
-            if(this.getSeatClass() == "business"){
+            if(this.getSeatClass().equals("business")){
                 additionalCosts += 50;
             }
 
