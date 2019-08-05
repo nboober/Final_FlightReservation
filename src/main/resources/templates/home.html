@@ -57,8 +57,15 @@
         <br>
 
 
-        <form autocomplete="off" action="#" th:action="@{/processflight}" th:object="${flight}" method="post">
-            <!--<input th:field="*{id}" type="hidden"/>-->
+        <form autocomplete="off" action="#" th:action="@{/processFlight}" th:object="${flight}" method="post">
+
+            <input type="hidden" th:value="${flight.id}" name="flightId"></input>
+
+            <input th:field="*{id}" type="hidden"/>
+
+
+            <!--<input type="hidden" th:field="*{flight}" th:value="${flight}"/>-->
+
         <table class="table table-hover table-striped" style="width:100%">
         <thead class="thead-light">
         <tr>
@@ -110,13 +117,14 @@
             </td>
 
         </table>
+        </form>
 
         <h6 sec:authorize="!isAuthenticated()"> <b>Register to select flights </b> <a href="/register"> Register here</a>
 
             Already registered? <a href="/login"> Sign in </a> </b> </h6>
         <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/payment/{id}(id=${flight.id})}" role="button" > Select flight </a>
 
-        </form>
+        <!--</form>-->
     </div>
 
 
