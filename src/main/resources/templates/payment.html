@@ -117,7 +117,7 @@
 
     <form autocomplete="off" action="#" th:action="@{/payment}" th:object="${card}" method="post">
 
-        <input type="hidden" th:value="${flight.id}" name="flightId"></input>
+        <input type="hidden" th:value="${flight.id}" name="flightId">
 
         <input th:field="*{id}" type="hidden"/>
 

@@ -56,29 +56,33 @@ public class HomeController {
         return "deals";
     }
 
-    @RequestMapping("/flightoptions")
-    public String flightOptions(Model model){
-        model.addAttribute("flights", flightRepository.findAll());
-
-        return "options";
-    }
-
     @PostMapping("/processFlight")
-    public String processFlight(@Valid Flight flight, BindingResult result){
+    public String processFlight(@Valid @ModelAttribute("flight") Flight flight, add .
+                                @RequestParam("flightId") long id,
+                                BindingResult result, Model model){
         if(result.hasErrors()){
+            model.addAttribute("flights", flightRepository.findAll());
             return "home";
         }
 
-        flightRepository.save(flight);
+        System.out.println("old flight is " + id);
+        Flight f = flightRepository.findById(id).get();
+        f.setQuantity(flight.getQuantity());
+        f.setSeatClass(flight.getSeatClass());
+        f.setSeatType(flight.getSeatType());
 
-        return "redirect:/payment";
+        flightRepository.save(f);
+
+        return "redirect:/payment/" + id;
+
     }
 
-    @RequestMapping("/payment")
-    public String createCard(@RequestParam("id") long id,
+    @RequestMapping("/payment/{id}")
+    public String createCard(@PathVariable("id") long id,
                              @ModelAttribute Flight flight, Model model){
 
         model.addAttribute("flight", flightRepository.findById(id).get());
+
         model.addAttribute("card", new Card());
 
         return "payment";
