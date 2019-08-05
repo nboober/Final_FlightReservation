@@ -31,7 +31,8 @@
 
 <!--        enhanced for loop-->
 
-        <tr th:each="flight : ${flights}">
+        <tr>
+
 
 
             <td>
@@ -94,12 +95,11 @@
                 <!--</div>-->
             <!--</td>-->
 
+<!--        <tr/>-->
+<!--    </table>-->
+
         <tr/>
     </table>
-
-
-    <!--<form autocomplete="off" action="#" th:action="@{/payment}" th:object="${card}" method="post">-->
-
 
     <br/>
     <br/>
@@ -109,14 +109,19 @@
 
 
     <form autocomplete="off" action="#" th:action="@{/payment}" th:object="${card}" method="post">
+
+        <input type="hidden" th:value="${flight.id}" name="flightId"></input>
+
         <input th:field="*{id}" type="hidden"/>
+
 
         <input type="hidden" th:field="*{user}" th:value="${user}"/>
 
+
             <div class="form-group">
                 <label for="cardNumber">Debit/Credit card Number <img src="https://res.cloudinary.com/duqszimh4/image/upload/c_thumb,w_200,g_face/v1564774511/credit-cards_fuhuaq.gif"> </label>
-                <input type="" class="form-control"
-                       id="cardNumber" placeholder="1234 "
+                <input type="text" class="form-control"
+                       id="cardNumber" placeholder="1234"
                        th:field="*{cardNumber}">
                 <strong>
                     <span class="error-message"
@@ -130,7 +135,7 @@
             <div class="form-group col-sm-6">
                 <label for="cardFirstName">Cardholder First Name</label>
                 <input type="text" class="form-control"
-                       id="cardFirstName" placeholder=" " th:field="*{cardFirstName}">
+                       id="cardFirstName" placeholder="First Name" th:field="*{cardFirstName}">
                 <strong>
                     <span class="error-message"
                           th:errors="*{cardFirstName}"
@@ -142,7 +147,7 @@
             <div class="form-group col-sm-6">
                 <label for="cardLastName">Carholder Last Name</label>
                 <input type="text" class="form-control"
-                       id="cardLastName" placeholder=" " th:field="*{cardLastName}">
+                       id="cardLastName" placeholder="Last Name" th:field="*{cardLastName}">
                 <strong>
                     <span class="error-message"
                           th:errors="*{cardLastName}"
@@ -156,8 +161,8 @@
         <div class="form-row">
             <div class="form-group col-sm-6">
                 <label for="securityCode">Security Code</label>
-                <input type="" class="form-control" id="securityCode"
-                       placeholder=" 999" th:field="*{securityCode}">
+                <input type="text" class="form-control" id="securityCode"
+                       placeholder="999" th:field="*{securityCode}">
                 <strong>
                     <span class="error-message"
                           th:errors="*{securityCode}"
@@ -168,8 +173,8 @@
             </div>
             <div class="form-group col-sm-4">
                 <label for="cardExpMonth">Expiration month</label>
-                <input type="" class="form-control"
-                       id="cardExpMonth" placeholder=" 01" th:field="*{cardExpMonth}">
+                <input type="text" class="form-control"
+                       id="cardExpMonth" placeholder="01" th:field="*{cardExpMonth}">
                 <strong>
                     <span class="error-message"
                           th:errors="*{cardExpMonth}"
@@ -180,8 +185,8 @@
             </div>
             <div class="form-group col-sm-2">
                 <label for="cardExpYear">Expiration year</label>
-                <input type="" class="form-control"
-                       id="cardExpYear" placeholder="2019 " th:field="*{cardExpYear}">
+                <input type="text" class="form-control"
+                       id="cardExpYear" placeholder="2019" th:field="*{cardExpYear}">
                 <strong>
                     <span class="error-message"
                           th:errors="*{cardExpYear}"
@@ -243,7 +248,7 @@
                 <!--</label>-->
             <!--</div>-->
         <!--</div>-->
-        <a href="/ticket" class="btn btn-primary">Complete Booking</a>
+        <input type="submit" value="Complete Booking" class="btn btn-primary"/>
 
     </form>
 

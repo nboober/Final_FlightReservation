@@ -67,19 +67,20 @@ public class HomeController {
     public String createCard(@PathVariable("id") long id,
                              @ModelAttribute Flight flight, Model model){
 
-        model.addAttribute("flights", flightRepository.findById(id).get());
+        model.addAttribute("flight", flightRepository.findById(id).get());
         model.addAttribute("card", new Card());
 
         return "payment";
     }
 
     @PostMapping("/payment")
-    public String payment(@Valid Card card, @ModelAttribute Flight flight,
+    public String payment(@Valid Card card, @RequestParam("flightId") long id,
                           BindingResult result){
 //        model.addAttribute("flights", flightRepository.findAllByUser(userService.getUser()));
         if(result.hasErrors()){
             return "payment";
         }
+        Flight flight = flightRepository.findById(id).get();
         flight.setUser(userService.getUser());
         flightRepository.save(flight);
 

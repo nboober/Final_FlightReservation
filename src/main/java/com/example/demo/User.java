@@ -229,6 +229,10 @@ public class User {
                 additionalCosts += 100;
             }
 
+            if(flight.getSeatClass() == "business"){
+                additionalCosts += 50;
+            }
+
             total += ((flight.getPrice() + additionalCosts) * flight.getQuantity());
         }
 
