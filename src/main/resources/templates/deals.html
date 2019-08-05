@@ -67,67 +67,67 @@
             <br>
 
 
-<!--            <form autocomplete="off" action="#" th:action="@{/processFlight}" th:object="${flight}" method="post">-->
+            <form autocomplete="off" action="#" th:action="@{/processFlight}" th:object="${flight}" method="post">
 
-<!--                <input type="hidden" th:value="${flight.id}" name="flightId"/>-->
+                <input type="hidden" th:value="${flight.id}" name="flightId"/>
 
-<!--                <table class="table table-hover table-striped" style="width:100%">-->
-<!--                    <thead class="thead-light">-->
-<!--                    <tr>-->
+                <table class="table table-hover table-striped" style="width:100%">
+                    <thead class="thead-light">
+                    <tr>
 
 
-<!--                        <th sec:authorize="isAuthenticated()">Select Seat</th>-->
-<!--                        <th sec:authorize="isAuthenticated()">Select Class</th>-->
-<!--                        <th sec:authorize="isAuthenticated()">Select Quantity</th>-->
+                        <th sec:authorize="isAuthenticated()">Select Seat</th>
+                        <th sec:authorize="isAuthenticated()">Select Class</th>
+                        <th sec:authorize="isAuthenticated()">Select Quantity</th>
 
-<!--                    </tr>-->
-<!--                    </thead>-->
-<!--                    <td sec:authorize="isAuthenticated()">-->
-<!--                        <div sec:authorize="hasAuthority('USER')">-->
+                    </tr>
+                    </thead>
+                    <td sec:authorize="isAuthenticated()">
+                        <div sec:authorize="hasAuthority('USER')">
 
-<!--                            <select id="seatType" name="seatType" th:field="*{seatType}">-->
-<!--                                <option value="window">Window</option>-->
-<!--                                <option value="aisle ">Aisle </option>-->
-<!--                            </select>-->
-<!--                        </div>-->
-<!--                    </td>-->
+                            <select id="seatType" name="seatType" th:field="*{seatType}">
+                                <option value="window">Window</option>
+                                <option value="aisle ">Aisle </option>
+                            </select>
+                        </div>
+                    </td>
 
-<!--                    <td sec:authorize="isAuthenticated()">-->
-<!--                        <div sec:authorize="hasAuthority('USER')">-->
+                    <td sec:authorize="isAuthenticated()">
+                        <div sec:authorize="hasAuthority('USER')">
 
-<!--                            <select th:field="*{seatClass}" id="seatClass" name="seatClass" >-->
-<!--                                <option value="first">First Class</option>-->
-<!--                                <option value="business">Business Class </option>-->
-<!--                                <option value="economy">Economy Class </option>-->
+                            <select th:field="*{seatClass}" id="seatClass" name="seatClass" >
+                                <option value="first">First Class</option>
+                                <option value="business">Business Class </option>
+                                <option value="economy">Economy Class </option>
 
-<!--                            </select>-->
-<!--                        </div>-->
-<!--                    </td>-->
+                            </select>
+                        </div>
+                    </td>
 
-<!--                    <td sec:authorize="isAuthenticated()">-->
-<!--                        <div sec:authorize="hasAuthority('USER')">-->
-<!--                            <div class="form-group col-sm-2">-->
-<!--                                &lt;!&ndash;<label for="cardExpYear">Expiration year</label>&ndash;&gt;-->
-<!--                                <input type="text" id="quantity" placeholder="1" th:field="*{quantity}" name="quantity"/>-->
-<!--                                <strong>-->
-<!--                        <span class="error-message"-->
-<!--                              th:errors="*{quantity}"-->
-<!--                              th:if="${#fields.hasErrors('quantity')}">-->
-<!--                              Please type quantity.-->
-<!--                        </span>-->
-<!--                                </strong>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </td>-->
+                    <td sec:authorize="isAuthenticated()">
+                        <div sec:authorize="hasAuthority('USER')">
+                            <div class="form-group col-sm-2">
+                                <!--<label for="cardExpYear">Expiration year</label>-->
+                                <input type="text" id="quantity" placeholder="1" th:field="*{quantity}" name="quantity"/>
+                                <strong>
+                        <span class="error-message"
+                              th:errors="*{quantity}"
+                              th:if="${#fields.hasErrors('quantity')}">
+                              Please type quantity.
+                        </span>
+                                </strong>
+                            </div>
+                        </div>
+                    </td>
 
-<!--                </table>-->
+                </table>
 
-<!--                <h6 sec:authorize="!isAuthenticated()"> <b>Register to select flights </b> <a href="/register"> Register here</a>-->
+                <h6 sec:authorize="!isAuthenticated()"> <b>Register to select flights </b> <a href="/register"> Register here</a>
 
-<!--                    Already registered? <a href="/login"> Sign in </a> </b> </h6>-->
-<!--                &lt;!&ndash;        <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/payment/{id}(id=${flight.id})}" role="button" > Select flight </a>&ndash;&gt;-->
-<!--                <input type="submit" value="Select Flight" sec:authorize="isAuthenticated()" class="btn btn-primary"/>-->
-<!--            </form>-->
+                    Already registered? <a href="/login"> Sign in </a> </b> </h6>
+                <!--        <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/payment/{id}(id=${flight.id})}" role="button" > Select flight </a>-->
+                <input type="submit" value="Select Flight" sec:authorize="isAuthenticated()" class="btn btn-primary"/>
+            </form>
 
     </div>
 
