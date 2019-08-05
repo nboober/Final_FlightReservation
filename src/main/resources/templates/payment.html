@@ -23,7 +23,8 @@
             <th>Departure Date</th>
             <th>Return Date</th>
             <th>Price</th>
-            <th>Seat</th>
+            <th>Class</th>
+            <th>Round Trip</th>
             <th sec:authorize="isAuthenticated()">Actions</th>
         </tr>
         </thead>
@@ -58,16 +59,22 @@
 
 
 
+            <!--<td>-->
+                <!--<span th:text="${user.totalCost}"></span>-->
+
+            <!--</td>-->
+
             <td>
-                <span th:text="${flight.price}"></span>
+                <span th:text="${flight.seatClass}"></span>
 
             </td>
 
-            <td>
-                <span th:text="${flight.seatTypeCapacity}"></span>
-
-            </td>
-
+            <div th:if="${flight.roundTrip == true}">
+            <td>Yes</td>
+            </div>
+            <div th:if="${flight.roundTrip == false}">
+                <td>No</td>
+            </div>
             <td sec:authorize="isAuthenticated()">
                 <div sec:authorize="hasAuthority('USER')">
 <!--                    <span th:if="${user.id == flight.id}">-->
