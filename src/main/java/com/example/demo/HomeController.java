@@ -38,7 +38,7 @@ public class HomeController {
 
     //Home
     @RequestMapping("/")
-    public String index(@Valid Flight flight, BindingResult result, Model model){
+    public String index(Model model){
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("flights", flightRepository.findAll());
 
@@ -51,7 +51,15 @@ public class HomeController {
 
     @RequestMapping("/deals")
     public String deals(Model model){
+//        model.addAttribute("users", userRepository.findAll());
+//        model.addAttribute("flights", flightRepository.findAll());
+
         model.addAttribute("flights", flightRepository.findByDiscount(true));
+
+//        //If there is a user logged in get the user
+//        if(userService.getUser() != null) {
+//            model.addAttribute("user", userService.getUser());
+//        }
 
         return "deals";
     }
@@ -91,7 +99,6 @@ public class HomeController {
     @PostMapping("/payment")
     public String payment(@Valid Card card, @RequestParam("flightId") long id,
                           BindingResult result){
-//        model.addAttribute("flights", flightRepository.findAllByUser(userService.getUser()));
         if(result.hasErrors()){
             return "payment";
         }

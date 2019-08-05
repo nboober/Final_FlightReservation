@@ -36,29 +36,38 @@
     <div class="jumbotron" th:each="flight : ${flights}">
         <hr class="my-4">
         <h5> Flight details</h5> <br><br>
+        <p th:if="${flight.discount}"> <b>**This flight is a deal!**</b> </p>
         <p th:inline="text"> Operating Airport <br> <b>[[${flight.operatingAirport}]]</b></p>
         <p> Operating Airline <br> <b> [[${flight.operatingAirline}]]</b>  </p>
         <p th:inline="text"> Departure Location <br> <b>[[${flight.startLocation}]] </b>  </p>
         <p th:inline="text"> Arrival Location <br> <b>[[${flight.endLocation}]]  </b>
+        <p th:if="${flight.discount}">Old Price <strike>$350</strike></p>
         <p> Price $[[${flight.price}]] </p>
-        <p th:inline="text"> Departing Date<b> [[${flight.startDate}]]</b>
-            Returning Date <b>[[${flight.endDate}]]</b> </p>
-        <p th:inline="text"> Departing time <i>[[${flight.startTime}]]</i>
-            Returning time <i> [[${flight.endTime}]]</i></p>
         <p th:if="${flight.roundTrip == true }"> This flight is round trip. </p>
         <p th:if="${flight.roundTrip == false }"> This flight is one way. </p>
+
+        <div th:if="${flight.roundTrip == true }">
+            <p th:inline="text"> Departing Date<b> [[${flight.startDate}]]</b>
+                Returning Date <b>[[${flight.endDate}]]</b> </p>
+            <p th:inline="text"> Departing time <i>[[${flight.startTime}]]</i>
+                Landing time <i> [[${flight.endTime}]]</i></p>
+        </div>
+
+        <div th:if="${flight.roundTrip == false }">
+            <p th:inline="text"> Departing Date<b> [[${flight.startDate}]]</b>
+                Landing Date <b>[[${flight.endDate}]]</b> </p>
+            <p th:inline="text"> Departing time <i>[[${flight.startTime}]]</i>
+                Landing time <i> [[${flight.endTime}]]</i></p>
+        </div>
 
         <p th:if="${flight.layover == true}"> There is a Layover</p>
         <p th:inline="text"> Flight capacity <i>[[${flight.flightCapacity}]]</i></p>
         <p th:inline="text"> You have <i> [[${flight.rewardPoints}]]</i>
             reward points you can use towards your flight today. </p>
-        <p th:if="${flight.discount}"> You have a discount </p>
         <br>
 
 
         <form autocomplete="off" action="#" th:action="@{/processFlight}" th:object="${flight}" method="post">
-
-            <!--            <input type="hidden" th:field="*{id}" name="flightId2">-->
 
             <input type="hidden" th:value="${flight.id}" name="flightId"/>
 

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Home/Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <th:block th:insert="base :: Bootstrap"></th:block>
+    <style>
+        body {
+            height: 100%;
+            background-image: url("https://res.cloudinary.com/dgogsuupz/image/upload/v1564593581/background_xpahh7.jpg");
+            background-position: center;
+            /*background-repeat: repeat;*/
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        @media (min-width: 500px) {
+            .jumbotron {
+                padding: 1rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav th:replace="base :: navbar"></nav>
+
+
+
+
+<div class="container">
+    <br/><br/><br/><br/>
+
+    <div class="jumbotron" th:each="flight : ${flights}">
+            <hr class="my-4">
+            <h5> Flight details</h5> <br><br>
+            <p th:if="${flight.discount}"> <b>**This flight is a deal!**</b> </p>
+            <p th:inline="text"> Operating Airport <br> <b>[[${flight.operatingAirport}]]</b></p>
+            <p> Operating Airline <br> <b> [[${flight.operatingAirline}]]</b>  </p>
+            <p th:inline="text"> Departure Location <br> <b>[[${flight.startLocation}]] </b>  </p>
+            <p th:inline="text"> Arrival Location <br> <b>[[${flight.endLocation}]]  </b>
+            <p th:if="${flight.discount}">Old Price <strike>$350</strike></p>
+            <p> Price $[[${flight.price}]] </p>
+            <p th:if="${flight.roundTrip == true }"> This flight is round trip. </p>
+            <p th:if="${flight.roundTrip == false }"> This flight is one way. </p>
+
+            <div th:if="${flight.roundTrip == true }">
+                <p th:inline="text"> Departing Date<b> [[${flight.startDate}]]</b>
+                    Returning Date <b>[[${flight.endDate}]]</b> </p>
+                <p th:inline="text"> Departing time <i>[[${flight.startTime}]]</i>
+                    Landing time <i> [[${flight.endTime}]]</i></p>
+            </div>
+
+            <div th:if="${flight.roundTrip == false }">
+                <p th:inline="text"> Departing Date<b> [[${flight.startDate}]]</b>
+                    Landing Date <b>[[${flight.endDate}]]</b> </p>
+                <p th:inline="text"> Departing time <i>[[${flight.startTime}]]</i>
+                    Landing time <i> [[${flight.endTime}]]</i></p>
+            </div>
+
+            <p th:if="${flight.layover == true}"> There is a Layover</p>
+            <p th:inline="text"> Flight capacity <i>[[${flight.flightCapacity}]]</i></p>
+            <p th:inline="text"> You have <i> [[${flight.rewardPoints}]]</i>
+                reward points you can use towards your flight today. </p>
+            <br>
+
+
+<!--            <form autocomplete="off" action="#" th:action="@{/processFlight}" th:object="${flight}" method="post">-->
+
+<!--                <input type="hidden" th:value="${flight.id}" name="flightId"/>-->
+
+<!--                <table class="table table-hover table-striped" style="width:100%">-->
+<!--                    <thead class="thead-light">-->
+<!--                    <tr>-->
+
+
+<!--                        <th sec:authorize="isAuthenticated()">Select Seat</th>-->
+<!--                        <th sec:authorize="isAuthenticated()">Select Class</th>-->
+<!--                        <th sec:authorize="isAuthenticated()">Select Quantity</th>-->
+
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <td sec:authorize="isAuthenticated()">-->
+<!--                        <div sec:authorize="hasAuthority('USER')">-->
+
+<!--                            <select id="seatType" name="seatType" th:field="*{seatType}">-->
+<!--                                <option value="window">Window</option>-->
+<!--                                <option value="aisle ">Aisle </option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                    </td>-->
+
+<!--                    <td sec:authorize="isAuthenticated()">-->
+<!--                        <div sec:authorize="hasAuthority('USER')">-->
+
+<!--                            <select th:field="*{seatClass}" id="seatClass" name="seatClass" >-->
+<!--                                <option value="first">First Class</option>-->
+<!--                                <option value="business">Business Class </option>-->
+<!--                                <option value="economy">Economy Class </option>-->
+
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                    </td>-->
+
+<!--                    <td sec:authorize="isAuthenticated()">-->
+<!--                        <div sec:authorize="hasAuthority('USER')">-->
+<!--                            <div class="form-group col-sm-2">-->
+<!--                                &lt;!&ndash;<label for="cardExpYear">Expiration year</label>&ndash;&gt;-->
+<!--                                <input type="text" id="quantity" placeholder="1" th:field="*{quantity}" name="quantity"/>-->
+<!--                                <strong>-->
+<!--                        <span class="error-message"-->
+<!--                              th:errors="*{quantity}"-->
+<!--                              th:if="${#fields.hasErrors('quantity')}">-->
+<!--                              Please type quantity.-->
+<!--                        </span>-->
+<!--                                </strong>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </td>-->
+
+<!--                </table>-->
+
+<!--                <h6 sec:authorize="!isAuthenticated()"> <b>Register to select flights </b> <a href="/register"> Register here</a>-->
+
+<!--                    Already registered? <a href="/login"> Sign in </a> </b> </h6>-->
+<!--                &lt;!&ndash;        <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/payment/{id}(id=${flight.id})}" role="button" > Select flight </a>&ndash;&gt;-->
+<!--                <input type="submit" value="Select Flight" sec:authorize="isAuthenticated()" class="btn btn-primary"/>-->
+<!--            </form>-->
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div th:replace="base :: footer"></div>
+
+</body>
+</html>
