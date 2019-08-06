@@ -11,63 +11,173 @@
 <nav th:replace="base :: navbar"></nav>
 
 
-<div class="container">
+<div class="container "align="center">
+<br/>
+    <br>
+        <div class="row">
+        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <address>
+                        <img src="https://res.cloudinary.com/duqszimh4/image/upload/c_thumb,w_200,g_face/v1565056794/bazaart1_q07ggq.png" width="50"><strong>EzBreezyFlights</strong>
 
-    <h2>Ticket Information</h2>
-    <table class="table table-hover table-striped" style="width:100%">
+                        <br>
+                        <br/>
+                        12 South Summit Ave. 4th Floor,
+                        <br>
+                        Gaithersburg, MD 20877
+                        <br>
+                        <abbr title="Phone">P:</abbr> (240) 484-6829
+                    </address>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                    <br/><br/><br/>
+                    <p>
+                        <em>Date: 5th Aug, 2019</em>
+                    </p>
+                    <p>
+                        <em> Itinerary #: 34522677W</em>
+                    </p>
+                </div>
+            </div>
 
-        <thead class="thead-light">
-        <tr>
+            <tr th:each="flight : ${flights}">
+            <div class="row">
+                <div class="text-left">
+                    <strong th:inline="text">Receipt for Flight to [[${flight.endLocation}]]</strong>
+                </div>
 
-            <th>Departure Location</th>
-            <th>Arrival Location</th>
-            <th>Departure Date</th>
-            <th>Return Date</th>
-            <th>Price</th>
-            <th>Quantity</th>
-
-        </tr>
-        </thead>
-
-
-
-
-        <tr th:each="flight : ${flights}">
-
-            <td>
-                <span th:text="${flight.startLocation}"></span>
-
-            </td>
-
-            <td>
-                <span th:text="${flight.endLocation}"></span>
-
-            </td>
-
-            <td>
-                <span th:text="${flight.startDate}"></span>
-
-            </td>
-
-            <td>
-                <span th:text="${flight.endDate}"></span>
-
-            </td>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Booked Items</th>
+                        <th>#</th>
+                        <th class="text-center">Class</th>
+                        <th class="text-center">Total</th>
+                    </tr>
+                    </thead>
 
 
+                <tbody>
+                <tr>
+                    <td class="col-md-9"><em th:inline="text">Flight:[[${flight.startLocation}]] to [[${flight.endLocation}]] </em></h4></td>
+                    <td class="col-md-1" style="text-align: center"> <p th:inline="text">[[${flight.quantity}]]</p> </td>
+                    <td class="col-md-1 text-center"><p th:inline="text">[[${flight.seatClass}]] </td>
+                    <td class="col-md-1 text-center"><p th:inline="text">[[${flight.totalCost}]]  </p></td>
+
+                </tr>
+                <tr>
+                    <td class="col-md-9"><em th:inline="text">Depart:[[${flight.startDate}]] [[${flight.startTime}]]</em></td> </td>
+                    <td class="col-md-1" style="text-align: center">   </td>
+                    <td class="col-md-1 text-center"></td>
+                    <td class="col-md-1 text-center"></td>
+                </tr>
+                <tr>
+                    <td class="col-md-9"><em th:inline="text">Arrival:[[${flight.endDate}]][[${flight.endTime}]]</em></h4></td>
+                    <td class="col-md-1" style="text-align: center">   </td>
+                    <td class="col-md-1 text-center"> </td>
+                    <td class="col-md-1 text-center"> </td>
+                </tr>
+                <tr>
+
+                    <td class="text-right">
+
+                        <p>
+                            <strong>Tax: </strong>
+                        </p></td>
+                    <td class="text-center">
+                        <p>
+
+                        </p>
+                        </td>
+                </tr>
+                <tr>
+
+                    <td class="text-right"><h4><strong>Total: </strong></h4></td>
+                    <td class="text-center text-danger"><h4><strong>$   </strong></h4></td>
+
+                </tr>
+                <tr>
+                    <td class="col-md-9 text-right">All prices quoted in US dollars. </td>
+                </tr>
+                </tbody>
+                </table>
 
 
-            <td>
-                <span th:text="${flight.totalCost}"></span>
 
-            </td>
+</div>
+            </tr>
+<!--    <table class="table table-hover table-striped" style="width:100%">-->
 
-            <td>
-                <span th:text="${flight.quantity}"></span>
+<!--        <thead class="thead-light">-->
+<!--        <tr>-->
 
-            </td>
-        </tr>
-    </table>
+<!--            <th>Departure Location</th>-->
+<!--            <th>Arrival Location</th>-->
+<!--            <th>Departure Date</th>-->
+<!--            <th>Return Date</th>-->
+<!--            <th>Price</th>-->
+<!--            <th>Quantity</th>-->
+
+<!--        </tr>-->
+<!--        </thead>-->
+
+
+
+
+<!--        <tr th:each="flight : ${flights}">-->
+
+<!--            <td>-->
+<!--                <span th:text="${flight.startLocation}"></span>-->
+
+<!--            </td>-->
+
+<!--            <td>-->
+<!--                <span th:text="${flight.endLocation}"></span>-->
+
+<!--            </td>-->
+
+<!--            <td>-->
+<!--                <span th:text="${flight.startDate}"></span>-->
+
+<!--            </td>-->
+
+<!--            <td>-->
+<!--                <span th:text="${flight.endDate}"></span>-->
+
+<!--            </td>-->
+
+
+
+
+<!--            <td>-->
+<!--                <span th:text="${flight.totalCost}"></span>-->
+
+<!--            </td>-->
+
+<!--            <td>-->
+<!--                <span th:text="${flight.quantity}"></span>-->
+
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+
+        <div>
+    <img alt="QR Code" src="./MyQRCode.png">
+        </div>
+</div>
+        </div>
 </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

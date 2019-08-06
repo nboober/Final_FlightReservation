@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
-<head th:replace="base :: head"></head>
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <th:block th:insert="base :: Bootstrap"></th:block>
+</head>
 <body>
 <nav th:replace="base :: navbar"></nav>
 
+
+
+<div class="container">
     <h3>Secure Page</h3>
     <a href="/logout">Logout</a>
 
@@ -31,5 +38,6 @@
 <a th:href="@{/update/{id} (id=${user.id})}">Update Profile</a>
 
 <div th:replace="base :: footer"></div>
+</div>
 </body>
 </html>
