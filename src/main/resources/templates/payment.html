@@ -22,6 +22,8 @@
             <th>Arrival Location</th>
             <th>Departure Date</th>
             <th>Return Date</th>
+            <th>Departure Time</th>
+            <th>Arrival Time</th>
             <th>Class</th>
             <th>Quantity</th>
             <th>Round Trip</th>
@@ -50,7 +52,18 @@
             </td>
 
             <td>
-                <span th:text="${flight.endDate}"></span>
+                <span th:if="${flight.roundTrip == true }" th:text="${flight.endDate}"></span>
+                <span th:if="${flight.roundTrip == false }" th:inline="text">N/A</span>
+
+            </td>
+
+            <td>
+                <span th:text="${flight.startTime}"></span>
+
+            </td>
+
+            <td>
+                <span th:text="${flight.endTime}"></span>
 
             </td>
 
