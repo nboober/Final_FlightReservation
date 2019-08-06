@@ -17,6 +17,10 @@ public class Flight {
 
     private String search;
 
+    private double tax;
+
+    private double totalForTax;
+
     private double totalCost;
 
     @Max(220)
@@ -309,5 +313,44 @@ public class Flight {
 
     public void setSeatTypeCapacity(int seatTypeCapacity) {
         this.seatTypeCapacity = seatTypeCapacity;
+    }
+
+    public double getTax() {
+
+        double tax = .06 * this.getTotalForTax();
+
+        return tax;
+    }
+
+    public void setTax(double tax) {
+        this.tax = tax;
+    }
+
+    public double getTotalForTax() {
+        int total = 0;
+        int additionalCosts = 0;
+
+
+
+        if(this.getSeatType().equals("window")){
+            additionalCosts += 5;
+        }
+
+        if(this.getSeatClass().equals("first")){
+            additionalCosts += 100;
+        }
+
+        if(this.getSeatClass().equals("business")){
+            additionalCosts += 50;
+        }
+
+        totalForTax += ((this.getPrice() + additionalCosts) * this.getQuantity());
+
+
+        return totalForTax;
+    }
+
+    public void setTotalForTax(double totalForTax) {
+        this.totalForTax = totalForTax;
     }
 }
