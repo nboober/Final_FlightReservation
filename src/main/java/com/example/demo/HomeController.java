@@ -127,6 +127,23 @@ public class HomeController {
         return "home";
     }
 
+    @RequestMapping("/addFlight")
+    public String addFlight(Model model){
+        model.addAttribute("flight", new Flight());
+        return "addFlight";
+    }
+
+    @PostMapping("/processNewFlight")
+    public String processNewFlight(@Valid Flight flight, BindingResult result){
+        if(result.hasErrors()){
+            return "addFlight";
+        }
+
+        flightRepository.save(flight);
+
+        return "redirect:/admin";
+    }
+
     @RequestMapping("/ticket")
     public String ticketPrint(Model model){
 //    model.addAttribute("user", userRepository.findById(id).get());
