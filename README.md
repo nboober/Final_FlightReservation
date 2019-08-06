@@ -1,8 +1,18 @@
 **Final Project - Flight Reservation**
 
-Create a flight reservation system for a single airline that allows users to search for and shop for flights.
+**Heroku URL**
 
-Like any flight reservation, the user should be able to customize the following options before getting a list of search results:
+"https://secret-tundra-24215.herokuapp.com/"
+
+**Project Developers**
+
+ - Yun
+ - Nick Boober
+ - Merry
+
+This project is a flight reservation website for a single airline that allows users to search for and shop for flights.
+
+Like any flight reservation, the user is able to customize the following options before getting a list of search results:
 
  - Round-trip vs. One-way
  - Number of flight passengers
@@ -33,14 +43,3 @@ Users can either log into their account to shop for a flight or create an accoun
 After the user checks out, generate a boarding pass with their flight information and user information stored in a QR code.
 
 Admins can add flights to the system.
-
- 
-
--------------------
-
-You must collaborate on GitHub. Coordinate accordingly so you avoid merge conflicts.
-
-You shall be presenting your final project on the last day. You will be showing the application as it is published on Heroku. You will have 25 minutes to present it.
-
-Each person in the group must speak during that time.
-

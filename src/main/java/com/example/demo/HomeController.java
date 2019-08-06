@@ -132,7 +132,8 @@ public class HomeController {
 //    model.addAttribute("user", userRepository.findById(id).get());
         model.addAttribute("flights", flightRepository.findAllByUser(userService.getUser()));
         model.addAttribute("user", userService.getUser());
-//        QRCodeGenerator qr = new QRCodeGenerator();
+        QRCodeGenerator qr = new QRCodeGenerator();
+        qr.generate();
 //        qr.setUser(userService.getUser());
 //        qrCodeRepository.save(qr);
 //        qr.getQR(id);

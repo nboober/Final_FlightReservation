@@ -48,7 +48,7 @@ public class QRCodeGenerator {
         return pngData;
     }
 
-    public static void main(String[] args)
+    public static void generate()
     {
         try {
             generateQRCodeImage("https://secret-tundra-24215.herokuapp.com/", 350, 350, QR_CODE_IMAGE_PATH);
@@ -74,4 +74,5 @@ public class QRCodeGenerator {
     public void setUser(User user) {
         this.user = user;
     }
+
 }
