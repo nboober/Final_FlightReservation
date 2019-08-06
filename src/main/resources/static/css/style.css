@@ -5,6 +5,12 @@
     padding: 0;
 }
 
+nav a{
+    color:black;
+}
+
 nav a:hover{
     text-decoration: none;
+    background-color: aqua;
+    color: black;
 }
