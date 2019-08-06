@@ -6,9 +6,9 @@
 
 **Project Developers**
 
- - Yun
+ - Yun Chen
  - Nick Boober
- - Merry
+ - Merry Merhu
 
 This project is a flight reservation website for a single airline that allows users to search for and shop for flights.
 
