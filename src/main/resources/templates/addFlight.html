@@ -64,31 +64,31 @@
 
             <div class="form-group">
                 <label for="exampleFormControlInput5">Price</label>
-                <input type="text" class="form-control" id="exampleFormControlInput5" placeholder="Price" th:field="*{price}"/>
+                <input type="text" class="form-control" id="exampleFormControlInput5" placeholder="300" th:field="*{price}"/>
                 <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
             </div>
 
             <div class="form-group">
                 <label for="exampleFormControlInput6">Start Date</label>
-                <input type="text" class="form-control" id="exampleFormControlInput6" placeholder="Date" th:field="*{startDate}"/>
+                <input type="text" class="form-control" id="exampleFormControlInput6" placeholder="xx/xx/xxxx" th:field="*{startDate}"/>
                 <p th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></p>
             </div>
 
             <div class="form-group">
                 <label for="exampleFormControlInput7">End Date</label>
-                <input type="text" class="form-control" id="exampleFormControlInput7" placeholder="Date" th:field="*{endDate}"/>
+                <input type="text" class="form-control" id="exampleFormControlInput7" placeholder="xx/xx/xxxx" th:field="*{endDate}"/>
                 <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></p>
             </div>
 
             <div class="form-group">
                 <label for="exampleFormControlInput8">Start Time</label>
-                <input type="text" class="form-control" id="exampleFormControlInput8" placeholder="Time" th:field="*{startTime}"/>
+                <input type="text" class="form-control" id="exampleFormControlInput8" placeholder="3:00" th:field="*{startTime}"/>
                 <p th:if="${#fields.hasErrors('startTime')}" th:errors="*{startTime}"></p>
             </div>
 
             <div class="form-group">
                 <label for="exampleFormControlInput9">End Time</label>
-                <input type="text" class="form-control" id="exampleFormControlInput9" placeholder="Time" th:field="*{endTime}"/>
+                <input type="text" class="form-control" id="exampleFormControlInput9" placeholder="3:00" th:field="*{endTime}"/>
                 <p th:if="${#fields.hasErrors('endTime')}" th:errors="*{endTime}"></p>
             </div>
 
@@ -100,13 +100,13 @@
 
             <div class="form-group">
                 <label for="exampleFormControlInput11">Layover</label>
-                <input type="text" class="form-control" id="exampleFormControlInput11" placeholder="true" th:field="*{layover}"/>
+                <input type="text" class="form-control" id="exampleFormControlInput11" placeholder="false" th:field="*{layover}"/>
                 <p th:if="${#fields.hasErrors('layover')}" th:errors="*{layover}"></p>
             </div>
 
             <div class="form-group">
                 <label for="exampleFormControlInput12">Flight Capacity</label>
-                <input type="text" class="form-control" id="exampleFormControlInput12" placeholder="Flight Capacity" th:field="*{flightCapacity}"/>
+                <input type="text" class="form-control" id="exampleFormControlInput12" placeholder="220" th:field="*{flightCapacity}"/>
                 <p th:if="${#fields.hasErrors('flightCapacity')}" th:errors="*{flightCapacity}"></p>
             </div>
 
@@ -118,7 +118,7 @@
 
             <div class="form-group">
                 <label for="exampleFormControlInput14">Discount</label>
-                <input type="text" class="form-control" id="exampleFormControlInput14" placeholder="true" th:field="*{discount}"/>
+                <input type="text" class="form-control" id="exampleFormControlInput14" placeholder="false" th:field="*{discount}"/>
                 <p th:if="${#fields.hasErrors('discount')}" th:errors="*{discount}"></p>
             </div>
 
