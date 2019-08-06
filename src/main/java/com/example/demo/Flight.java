@@ -23,6 +23,8 @@ public class Flight {
 
     private double totalCost;
 
+    private double totalWithTax;
+
     @Max(220)
     private int quantity;
 
@@ -327,7 +329,7 @@ public class Flight {
     }
 
     public double getTotalForTax() {
-        int total = 0;
+        int totalForTax = 0;
         int additionalCosts = 0;
 
 
@@ -352,5 +354,23 @@ public class Flight {
 
     public void setTotalForTax(double totalForTax) {
         this.totalForTax = totalForTax;
+    }
+
+    public String getTotalWithTax() {
+
+        double totalwithouttax = this.getTotalForTax();
+        double tax = this.getTax();
+
+        double total = (totalwithouttax + tax);
+
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String totalFormat = formatter.format(total);
+
+
+        return totalFormat;
+    }
+
+    public void setTotalWithTax(double totalWithTax) {
+        this.totalWithTax = totalWithTax;
     }
 }
